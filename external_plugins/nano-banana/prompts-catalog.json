@@ -1,0 +1,821 @@
+[
+  {
+    "case": 1,
+    "title": "Illustration to Figure",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Visual Transformation",
+    "input": "Need to upload a reference image as the object for generating the figure",
+    "prompt": "turn this photo into a character figure. Behind it, place a box with the character's image printed on it, and a computer showing the Blender modeling process on its screen. In front of the box, add a round plastic base with the character figure standing on it. set the scene indoors if possible",
+    "notes": null
+  },
+  {
+    "case": 2,
+    "title": "Generate Ground View from Map Arrow",
+    "author": "@tokumin",
+    "category": "Spatial & Geographic",
+    "input": "Need to upload a Google Maps image containing a red arrow",
+    "prompt": "draw what the red arrow sees / draw the real world view from the red circle in the direction of the arrow.",
+    "notes": null
+  },
+  {
+    "case": 3,
+    "title": "Real World AR Information",
+    "author": "@bilawalsidhu",
+    "category": "AR & Annotation",
+    "input": "Need to upload a reference image",
+    "prompt": "you are a location-based AR experience generator. highlight [point of interest] in this image and annotate relevant information about it.",
+    "notes": "Need to input the point of interest to be annotated in the prompt [POI]"
+  },
+  {
+    "case": 4,
+    "title": "Extract 3D Buildings/Make Isometric Models",
+    "author": "@Zieeett",
+    "category": "Spatial & Geographic",
+    "input": "Need to upload an image containing the corresponding object",
+    "prompt": "Make Image Daytime and Isometric [Building Only]",
+    "notes": "Modify the information in [brackets] as needed (can be set to vehicles, people, etc.)"
+  },
+  {
+    "case": 5,
+    "title": "Photos of Yourself in Different Eras",
+    "author": "@AmirMushich",
+    "category": "Visual Transformation",
+    "input": "Need to upload a photo of a person",
+    "prompt": "Change the characer's style to [1970]'s classical [male] style\n\nAdd [long curly] hair, \n[long mustache], \nchange the background to the iconic [californian summer landscape]\n\nDon't change the character's face",
+    "notes": "Change the text in [brackets] to your era and detail information"
+  },
+  {
+    "case": 6,
+    "title": "Multi-Reference Image Generation",
+    "author": "@MrDavids1",
+    "category": "Creative Design",
+    "input": "Need to upload multiple reference images",
+    "prompt": "A model is posing and leaning against a pink bmw. She is wearing the following items, the scene is against a light grey background. The green alien is a keychain and it's attached to the pink handbag. The model also has a pink parrot on her shoulder. There is a pug sitting next to her wearing a pink collar and gold headphones.",
+    "notes": "The prompt needs to describe in detail and include multiple reference objects"
+  },
+  {
+    "case": 7,
+    "title": "Automatic Photo Editing",
+    "author": "@op7418",
+    "category": "Photo Editing",
+    "input": "Need to upload an image that needs correction",
+    "prompt": "This photo is very boring and plain. Enhance it! Increase the contrast, boost the colors, and improve the lighting to make it richer,You can crop and delete details that affect the composition.",
+    "notes": null
+  },
+  {
+    "case": 8,
+    "title": "Hand Drawing Controls Multi-Character Poses",
+    "author": "@op7418",
+    "category": "Character Design",
+    "input": "Need to upload character images and hand-drawn sketches",
+    "prompt": "Have these two characters fight using the pose from Figure 3. Add appropriate visual backgrounds and scene interactions,Generated image ratio is 16:9",
+    "notes": null
+  },
+  {
+    "case": 9,
+    "title": "Cross-View Image Generation",
+    "author": "@op7418",
+    "category": "Spatial & Geographic",
+    "input": "Need to upload a photo taken from the ground",
+    "prompt": "Convert the photo to a top-down view and mark the location of the photographer.",
+    "notes": null
+  },
+  {
+    "case": 10,
+    "title": "Custom Character Stickers",
+    "author": "@op7418",
+    "category": "Entertainment",
+    "input": "Need to upload a sticker reference image and a character image",
+    "prompt": "Help me turn the character into a white outline sticker similar to Figure 2. The character needs to be transformed into a web illustration style, and add a playful white outline short phrase describing Figure 1.",
+    "notes": null
+  },
+  {
+    "case": 11,
+    "title": "Anime to Real Coser",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Visual Transformation",
+    "input": "Need to upload an illustration image",
+    "prompt": "Generate a photo of a girl cosplaying this illustration, with the background set at Comiket",
+    "notes": null
+  },
+  {
+    "case": 12,
+    "title": "Generate Character Design",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Character Design",
+    "input": "Need to upload a character reference image",
+    "prompt": "Generate character design for me (Character Design)\n\nProportion design (different height comparisons, head-to-body ratio, etc.)\n\nThree views (front, side, back)\n\nExpression design (Expression Sheet) → like the image you sent\n\nPose design (Pose Sheet) → various common poses\n\nCostume design (Costume Design)",
+    "notes": null
+  },
+  {
+    "case": 13,
+    "title": "Color Line Art with Color Palette",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Character Design",
+    "input": "Need to upload a line art image and a color palette image",
+    "prompt": "Accurately use the color palette from Figure 2 to color the character in Figure 1",
+    "notes": null
+  },
+  {
+    "case": 14,
+    "title": "Article Infographic",
+    "author": "@黄建同学",
+    "category": "Education & Science",
+    "input": "Need to upload a blog/article",
+    "prompt": "Generate an infographic for the article content\nRequirements:\n1. Translate the content into English and extract key information from the article\n2. Keep the content in the image concise, only retaining the main title\n3. Use English text in the image\n4. Add rich and cute cartoon characters and elements",
+    "notes": null
+  },
+  {
+    "case": 15,
+    "title": "Change Multiple Hairstyles",
+    "author": "@balconychy",
+    "category": "Fashion & Beauty",
+    "input": "Need to upload a portrait image that needs hairstyle changes",
+    "prompt": "Generate avatars of this person with different hairstyles in a 3x3 grid format",
+    "notes": null
+  },
+  {
+    "case": 16,
+    "title": "Model Annotation Explanation Diagram",
+    "author": "@berryxia_ai",
+    "category": "Education & Science",
+    "input": "No specific input required",
+    "prompt": "Draw [3D human organ model display example heart] for academic presentation, with annotations and explanations, suitable for showcasing its principles and [each organ's] functions, very realistic, highly detailed, with extremely fine design.",
+    "notes": "Change the text in [brackets] to the model you want to showcase. Note: annotations are not entirely accurate - verify before use."
+  },
+  {
+    "case": 17,
+    "title": "Custom Marble Sculpture",
+    "author": "@umesh_ai",
+    "category": "Creative Design",
+    "input": "Need to upload a reference image",
+    "prompt": "A photorealistic image of an ultra-detailed sculpture of the subject in image made of shining marble. The sculpture should display smooth and reflective marble surface, emphasizing its luster and artistic craftsmanship. The design is elegant, highlighting the beauty and depth of marble. The lighting in the image should enhance the sculpture's contours and textures, creating a visually stunning and mesmerizing effect",
+    "notes": null
+  },
+  {
+    "case": 18,
+    "title": "Cook Based on Ingredients",
+    "author": "@Gdgtify",
+    "category": "Food & Cooking",
+    "input": "Need to upload a photo with various ingredients",
+    "prompt": "make me a delicious lunch with these ingredients, and put it on a plate , zoomed in view of the plate, remove the other plates and ingredients.",
+    "notes": null
+  },
+  {
+    "case": 19,
+    "title": "Math Problem Reasoning",
+    "author": "@Gorden Sun",
+    "category": "Education & Science",
+    "input": "Need to upload a math problem",
+    "prompt": "Write the answer to the problem in the corresponding position based on the question",
+    "notes": null
+  },
+  {
+    "case": 20,
+    "title": "Old Photo Colorization",
+    "author": "@GeminiApp",
+    "category": "Photo Editing",
+    "input": "Need to upload an old photo that needs restoration",
+    "prompt": "restore and colorize this photo.",
+    "notes": null
+  },
+  {
+    "case": 21,
+    "title": "OOTD Outfit",
+    "author": "@302.AI",
+    "category": "Fashion & Beauty",
+    "input": "Need to upload a person image and clothing image",
+    "prompt": "Choose the person in Image 1 and dress them in all the clothing and accessories from Image 2. Shoot a series of realistic OOTD-style photos outdoors, using natural lighting, a stylish street style, and clear full-body shots. Keep the person's identity and pose from Image 1, but show the complete outfit and accessories from Image 2 in a cohesive, stylish way.",
+    "notes": null
+  },
+  {
+    "case": 22,
+    "title": "Character Clothing Change",
+    "author": "@skirano",
+    "category": "Fashion & Beauty",
+    "input": "Need to upload person image and clothing image",
+    "prompt": "Replace the person's clothing in the input image with the target clothing shown in the reference image. Keep the person's pose, facial expression, background, and overall realism unchanged. Make the new outfit look natural, well-fitted, and consistent with lighting and shadows. Do not alter the person's identity or the environment — only change the clothes.",
+    "notes": null
+  },
+  {
+    "case": 23,
+    "title": "Multi-View Result Generation",
+    "author": "@Error_HTTP_404",
+    "category": "Creative Design",
+    "input": "Need to upload reference image",
+    "prompt": "Generate the Front, Rear, Left, Right, Top, Bottom views on white. Evenly spaced. Consistent subject. Isometric Perspective Equivalence.",
+    "notes": null
+  },
+  {
+    "case": 24,
+    "title": "Movie Storyboard",
+    "author": "@GeminiApp",
+    "category": "Entertainment",
+    "input": "Need to upload reference image",
+    "prompt": "Create an addictively intriguing 12 part story with 12 images with these two characters in a classic black and white film noir detective story. Make it about missing treasure that they get clues for throughout and then finally discover. The story is thrilling throughout with emotional highs and lows and ending on a great twist and high note. Do not include any words or text on the images but tell the story purely through the imagery itself.",
+    "notes": null
+  },
+  {
+    "case": 25,
+    "title": "Character Pose Modification",
+    "author": "@arrakis_ai",
+    "category": "Character Design",
+    "input": "Need to upload reference image",
+    "prompt": "Have the person in the picture look straight ahead",
+    "notes": null
+  },
+  {
+    "case": 26,
+    "title": "Generate Image from Line Drawing",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Visual Transformation",
+    "input": "Need to upload line drawings and reference images",
+    "prompt": "Change the pose of the person in Figure 1 to that of Figure 2, and shoot in a professional studio",
+    "notes": null
+  },
+  {
+    "case": 27,
+    "title": "Add Watermark to Image",
+    "author": "@AiMachete",
+    "category": "AR & Annotation",
+    "input": "Need to upload a reference image",
+    "prompt": "Watermark the word 'TRUMP' over and over again across the whole image.",
+    "notes": null
+  },
+  {
+    "case": 28,
+    "title": "Knowledge Reasoning Image Generation",
+    "author": "@icreatelife",
+    "category": "Education & Science",
+    "input": "No specific input required",
+    "prompt": "Make me an infographic of 5 tallest buildings in the world / Make a colorful infographic of the sweetest things on Earth",
+    "notes": null
+  },
+  {
+    "case": 29,
+    "title": "Red Pen Annotations",
+    "author": "@AiMachete",
+    "category": "AR & Annotation",
+    "input": "Need to upload a reference image",
+    "prompt": "Analyze this image. Use red pen to denote where you can improve.",
+    "notes": null
+  },
+  {
+    "case": 30,
+    "title": "Explosive Food",
+    "author": "@icreatelife",
+    "category": "Food & Cooking",
+    "input": "Need to upload a reference image",
+    "prompt": "Photograph this product in a dramatic modern scene accompanied by explosive outward dynamic arrangement of the key ingredients fresh and raw flying around the product signifying its freshness and nutritional value. promo ad shot, without text, product is emphasized, with the key brand colors as background.",
+    "notes": null
+  },
+  {
+    "case": 31,
+    "title": "Create Comic Book",
+    "author": "@icreatelife",
+    "category": "Entertainment",
+    "input": "Need to upload a reference image",
+    "prompt": "Based on the uploaded image, make a comic book strip, add text, write a compelling story. I want a superhero comic book.",
+    "notes": null
+  },
+  {
+    "case": 32,
+    "title": "Action Figure",
+    "author": "@icreatelife",
+    "category": "Entertainment",
+    "input": "Need to upload a reference image",
+    "prompt": "make an action figure of me that says [\"AI Evangelist - Kris\"] and features [coffee, turtle, laptop, phone and headphones]",
+    "notes": "Change the text in [brackets] to the items you want to add"
+  },
+  {
+    "case": 33,
+    "title": "Map to Isometric Buildings",
+    "author": "@demishassabis",
+    "category": "Spatial & Geographic",
+    "input": "Need to upload a map reference image",
+    "prompt": "Take this location and make the landmark an isometric image (building only), in the stvle of the game Theme Park",
+    "notes": null
+  },
+  {
+    "case": 34,
+    "title": "Reference Image Controls Character Expression",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Character Design",
+    "input": "Need to upload a character reference image and an expression reference image",
+    "prompt": "Character reference from Image 1 / Change to the expression from Image 2",
+    "notes": null
+  },
+  {
+    "case": 35,
+    "title": "Illustration Drawing Process Four-Panel",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Character Design",
+    "input": "Need to upload a character reference image",
+    "prompt": "Generate a four-panel drawing process for the character: Step 1: Line art, Step 2: Flat colors, Step 3: Add shadows, Step 4: Refine and complete. No text.",
+    "notes": null
+  },
+  {
+    "case": 36,
+    "title": "Virtual Makeup Try-On",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Fashion & Beauty",
+    "input": "Need to upload a character reference image and a makeup reference image",
+    "prompt": "Apply the makeup from Image 2 to the character in Image 1, while maintaining the pose from Image 1.",
+    "notes": null
+  },
+  {
+    "case": 37,
+    "title": "Makeup Analysis",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Fashion & Beauty",
+    "input": "Need to upload a character reference image",
+    "prompt": "Analyze this image. Use a red pen to mark areas that can be improved\nAnalyze this image. Use a red pen to denote where you can improve",
+    "notes": null
+  },
+  {
+    "case": 38,
+    "title": "Google Maps View of Middle-earth",
+    "author": "@TechHallo",
+    "category": "Spatial & Geographic",
+    "input": "No specific input required",
+    "prompt": "Dashcam Google Street View shot | [Hobbiton Street] | [hobbits carrying out daily tasks like gardening and smoking pipes] | [Sunny weather]",
+    "notes": "Change the text in [brackets] to the desired location and weather"
+  },
+  {
+    "case": 39,
+    "title": "Typographic Illustration Generation",
+    "author": "@Umesh",
+    "category": "Creative Design",
+    "input": "No specific input required",
+    "prompt": "Create a minimalist black-and-white typographic illustration of the scene riding a bicycle using only the letters in the phrase ['riding a bicycle'] . Each letter should be creatively shaped or positioned to form the rider, the bicycle, and a sense of motion. The design should be clean, ultra-minimalist, and entirely composed of the modified ['riding a bicycle'] letters without adding any extra shapes or lines. The letters should flow or curve to mimic the natural form of the scene, while still remaining legible.",
+    "notes": "Change the text in [brackets] to the desired text"
+  },
+  {
+    "case": 40,
+    "title": "Multiple Character Poses Generation",
+    "author": "@tapehead_Lab",
+    "category": "Character Design",
+    "input": "Need to upload a character reference image",
+    "prompt": "Please create a pose sheet for this illustration, making various poses!",
+    "notes": null
+  },
+  {
+    "case": 41,
+    "title": "Product Packaging Generation",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Creative Design",
+    "input": "Need to upload a product reference image and a packaging reference image",
+    "prompt": "Apply the design from Image 1 to the can in Image 2, and place it in a minimalist design setting, professional photography",
+    "notes": null
+  },
+  {
+    "case": 42,
+    "title": "Overlay Filter/Material",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Visual Transformation",
+    "input": "Need to upload a reference image and a filter/material reference image",
+    "prompt": "Overlay the [glass] effect from Image 2 onto the photo in Image 1",
+    "notes": "Change the text in [brackets] to the desired filter/material"
+  },
+  {
+    "case": 43,
+    "title": "Control Character Face Shape",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Character Design",
+    "input": "Need to upload a reference image and a face shape reference image",
+    "prompt": "Design the character from Image 1 as a chibi version according to the face shape from Image 2",
+    "notes": null
+  },
+  {
+    "case": 44,
+    "title": "Lighting Control",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Photo Editing",
+    "input": "Need to upload a reference image and a lighting reference image",
+    "prompt": "Change the character from Image 1 to the lighting from Image 2, with dark areas as shadows",
+    "notes": null
+  },
+  {
+    "case": 45,
+    "title": "LEGO Minifigure",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Entertainment",
+    "input": "Need to upload a reference image",
+    "prompt": "Transform the person in the photo into a LEGO minifigure packaging box style, presented in isometric perspective. Label the box with the title \"ZHOGUE\". Inside the box, display the LEGO minifigure based on the person in the photo, along with their essential items (such as makeup, bags, or other items) as LEGO accessories. Beside the box, also display the actual LEGO minifigure itself, unpackaged, rendered in a realistic and vivid style.",
+    "notes": null
+  },
+  {
+    "case": 46,
+    "title": "Gundam Model Figure",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Entertainment",
+    "input": "Need to upload a reference image",
+    "prompt": "Transform the person in the photo into a Gundam model kit packaging box style, presented in isometric perspective. Label the box with the title \"ZHOGUE\". Inside the box, display a Gundam-style mechanical version of the person from the photo, along with their essentials (such as makeup, bags, or other items) redesigned as futuristic mechanical accessories. The packaging should resemble real Gunpla boxes, including technical illustrations, instruction manual-style details, and sci-fi fonts. Beside the box, also display the actual Gundam-style mechanical figure itself, outside the packaging, rendered in a realistic and lifelike style, similar to official Bandai promotional renders.",
+    "notes": null
+  },
+  {
+    "case": 47,
+    "title": "Hardware Exploded View",
+    "author": "@AIimagined",
+    "category": "Education & Science",
+    "input": "No specific input required",
+    "prompt": "Exploded view of a DSLR showing all its accessories and internal components such as lens, filter, internal components, lens, sensor, screws, buttons, viewfinder, housing, and circuit board. Maintain red accents of the DSLR",
+    "notes": null
+  },
+  {
+    "case": 48,
+    "title": "Food Calorie Annotation",
+    "author": "@icreatelife",
+    "category": "Food & Cooking",
+    "input": "Need to upload a food reference image",
+    "prompt": "annotate this meal with names of food and calorie density and approximate calories",
+    "notes": null
+  },
+  {
+    "case": 49,
+    "title": "Extract Subject and Place on Transparent Layer",
+    "author": "@nglprz",
+    "category": "Photo Editing",
+    "input": "Need to upload a reference image",
+    "prompt": "extract the [samurai] and put transparent background",
+    "notes": "Replace the text in [brackets] with the object you need to extract."
+  },
+  {
+    "case": 50,
+    "title": "Image Outpainting Repair",
+    "author": "@bwabbage",
+    "category": "Photo Editing",
+    "input": "Need to upload an image containing transparent checkerboard areas",
+    "prompt": "Repair the checkerboard (transparent) parts of the image and restore a complete, coherent photo.",
+    "notes": null
+  },
+  {
+    "case": 51,
+    "title": "Ancient Map to Historical Scene Photo",
+    "author": "@levelsio",
+    "category": "Visual Transformation",
+    "input": "Need to upload a historical reference image",
+    "prompt": "full colour photograph. New Amsterdam in 1660. make sure it's full modern colors as if it's a photograph taken today.",
+    "notes": null
+  },
+  {
+    "case": 52,
+    "title": "Fashion Moodboard Collage",
+    "author": "@tetumemo",
+    "category": "Fashion & Beauty",
+    "input": "Need to upload a reference image",
+    "prompt": "A fashion mood board collage. Surround a portrait with cutouts of the individual items the model is wearing. Add handwritten notes and sketches in a playful, marker-style font, and include the brand name and source of each item in English. The overall aesthetic should be creative and cute.",
+    "notes": null
+  },
+  {
+    "case": 53,
+    "title": "Delicate Cute Product Photo",
+    "author": "@azed_ai",
+    "category": "Creative Design",
+    "input": "No specific input required",
+    "prompt": "A high-resolution advertising photograph of a realistic, miniature [PRODUCT] held delicately between a person's thumb and index finger. clean and white background, studio lighting, soft shadows. The hand is well-groomed, natural skin tone, and positioned to highlight the product's shape and details. The product appears extremely small but hyper-detailed and brand-accurate, centered in the frame with a shallow depth of field. Emulates luxury product photography and minimalist commercial style.",
+    "notes": "Replace the text in [brackets] with the product you want to showcase."
+  },
+  {
+    "case": 54,
+    "title": "Place Anime Statue in Real Life",
+    "author": "@riddi0908",
+    "category": "Entertainment",
+    "input": "Need to upload a reference image",
+    "prompt": "A realistic photographic work. A gigantic statue of this person has been placed in a square in the center of Tokyo, with people looking up at it.",
+    "notes": null
+  },
+  {
+    "case": 55,
+    "title": "Create an Itasha Car",
+    "author": "@riddi0908",
+    "category": "Creative Design",
+    "input": "Need to upload a reference image",
+    "prompt": "Create a professional photograph of a sporty car with anime-style character artwork as itasha (painted car) design, shot at a famous tourist destination or scenic landmark. The car features large, prominently displayed anime character illustrations with simple, clean design composition. The character artwork should be painted in vibrant anime art style with bold colors and clear details. Position the vehicle at a recognizable tourist spot or scenic location with good natural lighting that showcases both the car's sporty appearance and the character artwork. Use professional automotive photography techniques with proper depth of field to highlight the itasha design while incorporating the scenic background for tourism appeal, suitable for promotional or enthusiast marketing materials.",
+    "notes": null
+  },
+  {
+    "case": 56,
+    "title": "Manga Composition",
+    "author": "@namaedousiyoka",
+    "category": "Visual Transformation",
+    "input": "Need to upload a character reference image and a scene composition reference image",
+    "prompt": null,
+    "notes": "This case relies on the reference images to guide the composition"
+  },
+  {
+    "case": 57,
+    "title": "Manga Style Conversion",
+    "author": "@nobisiro_2023",
+    "category": "Visual Transformation",
+    "input": "Need to upload a reference image",
+    "prompt": "Convert the input photo into a black-and-white manga-style line drawing.",
+    "notes": null
+  },
+  {
+    "case": 58,
+    "title": "Isometric Holographic Wireframe",
+    "author": "@tetumemo",
+    "category": "Visual Transformation",
+    "input": "Need to upload a line-art reference image",
+    "prompt": "Based on the uploaded image, convert it into a holographic depiction using wireframe lines only.",
+    "notes": null
+  },
+  {
+    "case": 59,
+    "title": "Minecraft-Style Scene Generation",
+    "author": "@tetumemo",
+    "category": "Entertainment",
+    "input": "Need to upload a Google Maps reference image",
+    "prompt": "Using this location, create an isometric HD-2D Minecraft-style image of the landmark (buildings only).",
+    "notes": null
+  },
+  {
+    "case": 60,
+    "title": "Apply Material Sphere to Logo",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Creative Design",
+    "input": "Need to upload a reference image and a material-sphere image",
+    "prompt": "Apply the material from Image 2 to the logo in Image 1, present it as a 3D object, render in a C4D-like style, with a solid-color background.",
+    "notes": null
+  },
+  {
+    "case": 61,
+    "title": "Floor Plan 3D Render",
+    "author": "@op7418",
+    "category": "Spatial & Geographic",
+    "input": "Need to upload a floor-plan reference image",
+    "prompt": "Convert this residential floor plan into an isometric, photo-realistic 3D rendering of the house.",
+    "notes": null
+  },
+  {
+    "case": 62,
+    "title": "Reset Camera Parameters",
+    "author": "@hckinz",
+    "category": "Photo Editing",
+    "input": "Need to upload a reference image",
+    "prompt": "RAW-ISO [100] - [F2.8-1/200 24mm] settings",
+    "notes": "Replace the values in [brackets] with your desired camera parameters."
+  },
+  {
+    "case": 63,
+    "title": "Create an ID Photo",
+    "author": "@songguoxiansen",
+    "category": "Photo Editing",
+    "input": "Need to upload a portrait reference image",
+    "prompt": "Crop the head and create a 2-inch ID photo with:\n  1. Blue background\n  2. Professional business attire\n  3. Frontal face\n  4. Slight smile",
+    "notes": null
+  },
+  {
+    "case": 64,
+    "title": "Scene A6 Folding Card",
+    "author": "@Gdgtify",
+    "category": "Creative Design",
+    "input": "Need to upload a reference image",
+    "prompt": "Draw an A6 folding card: when opened, it reveals a complete 3D spherical tiny house with a miniature paper garden and a bonsai tree inside.",
+    "notes": null
+  },
+  {
+    "case": 65,
+    "title": "Design a Chess Set",
+    "author": "@Gdgtify",
+    "category": "Creative Design",
+    "input": "Need to upload a reference image",
+    "prompt": "Draw a chessboard and a set of 3D-printable chess pieces inspired by this image.",
+    "notes": null
+  },
+  {
+    "case": 66,
+    "title": "Split-Contrast Style Photo",
+    "author": "@fofrAI",
+    "category": "Creative Design",
+    "input": "No specific input required",
+    "prompt": "A photo of a bedroom split down the middle: the left side is 2018 and the right side is 1964, in the same room.",
+    "notes": null
+  },
+  {
+    "case": 67,
+    "title": "Jewelry Collection Design",
+    "author": "@Gdgtify",
+    "category": "Creative Design",
+    "input": "Need to upload a reference image",
+    "prompt": "Transform this image into a 5-piece jewelry collection.",
+    "notes": null
+  },
+  {
+    "case": 68,
+    "title": "Merchandise Design",
+    "author": "@0xFramer",
+    "category": "Creative Design",
+    "input": "Need to upload a reference image",
+    "prompt": "Create merchandise using this character image.",
+    "notes": null
+  },
+  {
+    "case": 69,
+    "title": "Model Holographic Projection",
+    "author": "@UNIBRACITY",
+    "category": "Creative Design",
+    "input": "Optional reference image",
+    "prompt": "Ultra-realistic product photo.\nSubject: virtual holographic character [CHARACTER], floating above a circular hologram projector placed on a modern desk.\n\nProjection source rules:\n- If input reference is a 3D object: show a desktop 3D scanner beside the projector. Place the reference object on the scanner plate. The hologram above the projector is generated from this scanned object.\n- If input reference is a 2D image: show a modern PC with monitor on the desk. Display the reference image on the monitor screen. The hologram above the projector is generated from this screen content.\n\nHologram rendering rules:\n- Character always appears as a semi-transparent volumetric image.\n- No beams, no particles, no solid statue surfaces.\n- Natural pose with clear silhouette.\n- Face crisp and expressive.\n\nEnvironment: modern desk with projector base + conditional device.\nCamera: 85-100mm lens, 3/4 hero angle, eye-level.\nBackground: seamless black studio with subtle reflections.",
+    "notes": "Replace the text inside [brackets] with your input character"
+  },
+  {
+    "case": 70,
+    "title": "Giant Figure Scaffolding",
+    "author": "@songguoxiansen",
+    "category": "Entertainment",
+    "input": "A reference photo of a person must be uploaded",
+    "prompt": "A hyper-realistic 3D render of the person in the image standing and taking a selfie. The giant figure is surrounded by massive scaffolding, with many tiny construction workers working on it. The scene is set in a city square, surrounded by modern buildings, moving vehicles (cars, buses), pedestrians, and a bright clear blue sky. The overall details are rich, presenting a photo-realistic texture with cinematic lighting effects.",
+    "notes": null
+  },
+  {
+    "case": 71,
+    "title": "Building Extraction from Remote Sensing Image",
+    "author": "@lehua555",
+    "category": "Spatial & Geographic",
+    "input": "A remote sensing image must be uploaded",
+    "prompt": "Remove everything in the image except the buildings.",
+    "notes": null
+  },
+  {
+    "case": 72,
+    "title": "Component Extraction",
+    "author": "@tetumemo",
+    "category": "Creative Design",
+    "input": "An image of a model must be uploaded",
+    "prompt": "Cut out each component and create a model sheet that retains the hologram.",
+    "notes": null
+  },
+  {
+    "case": 73,
+    "title": "Remove Burger Ingredients",
+    "author": "@bind_lux",
+    "category": "Food & Cooking",
+    "input": "An image of a burger must be uploaded",
+    "prompt": "Remove all the ingredients from the burger and keep only the top and bottom buns. Leave a gap between them, keeping the same spacing as if the fillings were still inside.",
+    "notes": null
+  },
+  {
+    "case": 74,
+    "title": "High-Resolution Image Restoration",
+    "author": "@op7418",
+    "category": "Photo Editing",
+    "input": "A reference image must be uploaded",
+    "prompt": "Enhance the resolution of this old image and add the appropriate texture details, reinterpreting it with modern anime techniques.",
+    "notes": null
+  },
+  {
+    "case": 75,
+    "title": "Generate Miniature Scene from Image",
+    "author": "@techhalla",
+    "category": "Visual Transformation",
+    "input": "A reference image must be uploaded",
+    "prompt": "Convert the image to isometric view",
+    "notes": null
+  },
+  {
+    "case": 76,
+    "title": "Educational Comic",
+    "author": "@op7418",
+    "category": "Education & Science",
+    "input": "No specific input required",
+    "prompt": "Help me generate multiple 16:9 doodle-style images to explain the concept of \"futures\" to middle school students. The images should have a consistent colorful, thick-pencil hand-drawn style, be rich in information, feature English text, use solid color backgrounds, have outlines around the cards, and include uniform titles, similar to a PowerPoint presentation.",
+    "notes": null
+  },
+  {
+    "case": 77,
+    "title": "Custom Character Emoji Pack Generation",
+    "author": "@vista8",
+    "category": "Entertainment",
+    "input": "A reference image must be uploaded",
+    "prompt": "Using the character from Image 2, generate [x] emoji stickers based on various poses from Image 1.",
+    "notes": "Replace the text inside [brackets] with the desired number of emoji stickers"
+  },
+  {
+    "case": 78,
+    "title": "Restore Partially Eaten Food",
+    "author": "@googlejapan",
+    "category": "Food & Cooking",
+    "input": "A reference image must be uploaded",
+    "prompt": "Restore this half-eaten [XX] back to its original uneaten state.",
+    "notes": "Replace the text inside [brackets] with the name of the food"
+  },
+  {
+    "case": 79,
+    "title": "Fighting Game Interface Creation",
+    "author": "@NanoBanana_labs",
+    "category": "Entertainment",
+    "input": "A reference image must be uploaded",
+    "prompt": "Create a mid motion action scene where both subjects are in focus with a Three-Quarter Angle in martial arts fighting stances. They are in the same cinematic scene. Remove the line down the centre with a blurred crumbling ruins in a purple alien world in the background. The scene is shot at sunrise. Modern Fighting game health bars MORDON V'S DEATHSEED. power move. Hud style screen effects. Add a thumbnail of each character to the health bars. Lens flares!",
+    "notes": null
+  },
+  {
+    "case": 80,
+    "title": "Model Cross-Section",
+    "author": "@old_pgmrs_will",
+    "category": "Education & Science",
+    "input": "A reference image must be uploaded",
+    "prompt": "Create a cutaway visualization of this car, show exterior intact on one side, and interior engine + seats exposed on the other side. Keep proportions accurate and details realistic.",
+    "notes": null
+  },
+  {
+    "case": 81,
+    "title": "Pirate Wanted Poster",
+    "author": "@AI_Kei75",
+    "category": "Entertainment",
+    "input": "A reference image must be uploaded",
+    "prompt": "Using the original image, recreate a pirate's wanted poster drawn on parchment.\nBrown monochrome, with the texture of aged parchment.\nRetain the style and character design of the original image down to the smallest detail, and paste it large at the top of the wanted poster.\nA close-up of the face. Have the character wear a pirate hat.\nWrite the bounty amount at the bottom of the poster. The bounty amount will be random, and a fictitious currency unit will be used.\nBelow the bounty amount, write the crime in small letters. Use a fictitious language. English or Chinese characters may not be used.",
+    "notes": null
+  },
+  {
+    "case": 82,
+    "title": "Merchandise Display Shelf",
+    "author": "@tokyo_Valentine",
+    "category": "Creative Design",
+    "input": "A reference image must be uploaded",
+    "prompt": "Remove the background from this illustration and turn it into merchandise like figurines.\nImage: Photorealistic\nLocation: The shelves of a fictional convenience store. The cute, pop atmosphere is complemented by neatly arranged merchandise featuring the illustration.\n\nMerchandise Lineup:\nTwo large, approximately 50cm-long figures in the center (for a striking display)\nAcrylic stands (deformed versions of the original artwork)\nChibi figures, Dakimakura pillows, Jigsaw puzzles, Stationery, Cardboards, Plush toys\n\nOverall tone: A dreamlike merchandise sales space. Cuteness and pop are at the forefront.",
+    "notes": null
+  },
+  {
+    "case": 83,
+    "title": "Comic Convention Booth",
+    "author": "@tokyo_Valentine",
+    "category": "Entertainment",
+    "input": "A reference image must be uploaded",
+    "prompt": "Erase the background and replace the characters with the following:\n\nCosplayers and Character Goods\nMain Character: A cosplayer is holding a figurine in the center of the screen.\nLocation: Comic Market (a doujinshi sales event). A spacious booth is filled with merchandise.\n\nMerchandise Lineup:\nA large approximately 100cm figure displayed in the center, 80-inch LCD panel display, Acrylic Stands, Chibi Figures, Body Pillows, Jigsaw Puzzles, Stationery, Desk Pads, Plush Toys\n\nOverall Tone: A dreamlike sales space emphasizing cuteness and pop.\nImage Quality: Photorealistic, 4K",
+    "notes": null
+  },
+  {
+    "case": 84,
+    "title": "Line Art to Doodle Drawing",
+    "author": "@hAru_mAki_ch",
+    "category": "Visual Transformation",
+    "input": "A reference image must be uploaded",
+    "prompt": "Make the uploaded picture book look as if it was drawn by a five-year-old child.",
+    "notes": null
+  },
+  {
+    "case": 85,
+    "title": "Contemporary Art Exhibition Space",
+    "author": "@UNIBRACITY",
+    "category": "Creative Design",
+    "input": "A reference image must be uploaded",
+    "prompt": "An avant-garde contemporary art exhibition space themed around the reference image.\nThe entire exhibition hall (20.0 m x 20.0 m x 8.0 m) integrates architecture, lighting, flooring, walls, and ceiling into the artistic expression.\n\nAt the far end of the hall stands a massive wall 20 meters wide and 8 meters high. In the center of this wall, the theme from the reference image is presented in a monumental artistic form.\n\nThe floor is polished granite with reflections. Patterns and light derived from the reference image cascade across the surface.\n\nVisitor capacity is limited to 8-25 people. All faces are blurred to ensure anonymity.\n\nThe composition is stable, with the central vanishing point always aligned with the center of the wall.",
+    "notes": null
+  },
+  {
+    "case": 86,
+    "title": "Dark Gothic Tarot Card",
+    "author": "@ImperfectEngel",
+    "category": "Entertainment",
+    "input": "A reference image must be uploaded",
+    "prompt": "Generate a dark gothic tarot card featuring me from this image. Include [\"AI Artist - Shira\"] and [coffee, white fluffy chubby cat with pink bow, laptop, phone, headphones] as symbols, with moody shadows, intricate gothic borders, and mystical dark fantasy vibes.",
+    "notes": "Replace the text inside [brackets] with your desired settings"
+  },
+  {
+    "case": 87,
+    "title": "Black and White Evolution Chart",
+    "author": "@ZHO_ZHO_ZHO",
+    "category": "Education & Science",
+    "input": "No specific input required",
+    "prompt": "Generate an evolutionary progression chart in a minimalist black-and-white style, showing the evolution from the earliest apes to humans and finally into a banana.",
+    "notes": null
+  },
+  {
+    "case": 88,
+    "title": "Glass Bottle Souvenir",
+    "author": "@NanoBanana_labs",
+    "category": "Creative Design",
+    "input": "A reference image must be uploaded",
+    "prompt": "A 1/7 scale commercialized collectible figure of the character from the photo, crafted in a highly realistic style. The figure is placed in a detailed beach environment with sand, seashells, and gentle ocean waves. The entire toy display is enclosed inside a clear souvenir glass bottle, giving it a premium miniature diorama look, with realistic lighting and shadows",
+    "notes": null
+  },
+  {
+    "case": 89,
+    "title": "Miniature Store",
+    "author": "@NanoBanana_labs",
+    "category": "Creative Design",
+    "input": "No specific input required",
+    "prompt": "Tiny diorama shop for [BRAND]. Roof made of oversized [PRODUCT], big [BRAND] logo sign above the window, vendor handing a [PRODUCT] to a customer, ground covered with many [PRODUCT]. Hand-made polymer-clay look, studio macro photo, soft light, shallow depth of field, vertical 3:4",
+    "notes": "Replace the text inside [brackets] with your desired product"
+  },
+  {
+    "case": 90,
+    "title": "Become a Vtuber",
+    "author": "@AI_Kei75",
+    "category": "Entertainment",
+    "input": "A reference image must be uploaded",
+    "prompt": "Create a fictional Vtuber and their streaming screen using the original image.\nThe Vtuber's hairstyle and clothing will be faithfully reproduced from the original image.\nThe Vtuber image will be 2.5D-like, so it is not necessary to perfectly reproduce the style of the original image.\nThe Vtuber's facial expression and pose may be changed from the original image. Have the Vtuber hold a game controller.\nPlace only the Vtuber's upper body in the bottom right of the screen. Place the streaming screen of the game being played in the center of the screen. Place the chat screen on the left side of the screen.\nAdd a fictional streaming platform and browser UI to the top and bottom of the screen.",
+    "notes": null
+  },
+  {
+    "case": 91,
+    "title": "Train Station Movie Poster",
+    "author": "@AI_Kei75",
+    "category": "Entertainment",
+    "input": "A reference image must be uploaded",
+    "prompt": "Create a movie poster using the original image. The genre of the movie will be determined based on the atmosphere of the original image.\nRegardless of whether the original image is anime or live-action, the style and character design of the original image will be maintained as perfectly as possible. However, poses and expressions may be changed to match the poster design.\nThe final generated image will be photorealistic.\nThe scenery of the underground passage of a Japanese station where the poster is posted will be recreated in a realistic image. People passing through the underground passage will be added.\nThe reflection of the poster is angled to make it look more realistic.",
+    "notes": null
+  }
+]
