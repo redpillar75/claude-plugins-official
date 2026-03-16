@@ -1,0 +1,8 @@
+{
+  "name": "superpowers",
+  "description": "A complete software development workflow for coding agents: brainstorming, planning, subagent-driven development, TDD, code review, debugging, and git worktree management. Skills trigger automatically to keep agents on a disciplined path from idea to merged branch.",
+  "author": {
+    "name": "Jesse Vincent (obra)",
+    "url": "https://github.com/obra/superpowers"
+  }
+}
