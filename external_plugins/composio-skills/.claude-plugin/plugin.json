@@ -1,0 +1,8 @@
+{
+  "name": "composio-skills",
+  "description": "A curated set of Composio skills for Claude Code: skill-creator for building new skills, mcp-builder for creating MCP servers, and changelog-generator for producing release notes from git history.",
+  "author": {
+    "name": "Composio",
+    "url": "https://github.com/ComposioHQ/awesome-claude-skills"
+  }
+}
