@@ -1,0 +1,8 @@
+{
+  "name": "anthropic-example-skills",
+  "description": "Anthropic's official example skills: skill-creator (build and eval skills), mcp-builder (create MCP servers), frontend-design (production-grade UI), webapp-testing (Playwright-based testing), doc-coauthoring (structured docs workflow), internal-comms, brand-guidelines, algorithmic-art, canvas-design, web-artifacts-builder, slack-gif-creator, and theme-factory.",
+  "author": {
+    "name": "Anthropic",
+    "url": "https://github.com/anthropics/skills"
+  }
+}

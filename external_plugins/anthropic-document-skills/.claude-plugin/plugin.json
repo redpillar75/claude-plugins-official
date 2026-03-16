@@ -1,0 +1,8 @@
+{
+  "name": "anthropic-document-skills",
+  "description": "Anthropic's production document processing skills powering Claude's native document capabilities: Excel (xlsx), Word (docx), PowerPoint (pptx), and PDF creation and editing.",
+  "author": {
+    "name": "Anthropic",
+    "url": "https://github.com/anthropics/skills"
+  }
+}

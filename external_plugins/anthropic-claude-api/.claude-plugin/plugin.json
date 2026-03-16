@@ -1,0 +1,8 @@
+{
+  "name": "anthropic-claude-api",
+  "description": "Build apps with the Claude API or Anthropic SDK. Triggers when code imports anthropic/@anthropic-ai/sdk/claude_agent_sdk, or when asked to use the Claude API, Anthropic SDKs, or Agent SDK. Covers Python, TypeScript, Go, Java, Ruby, PHP, C#, and curl with up-to-date SDK patterns.",
+  "author": {
+    "name": "Anthropic",
+    "url": "https://github.com/anthropics/skills"
+  }
+}
