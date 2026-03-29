@@ -1,0 +1,3 @@
+[submodule "external_plugins/daVinci-MagiHuman"]
+	path = external_plugins/daVinci-MagiHuman
+	url = https://github.com/GAIR-NLP/daVinci-MagiHuman.git
