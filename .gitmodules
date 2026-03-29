@@ -1,3 +1,6 @@
 [submodule "external_plugins/daVinci-MagiHuman"]
 	path = external_plugins/daVinci-MagiHuman
 	url = https://github.com/GAIR-NLP/daVinci-MagiHuman.git
+[submodule "external_plugins/VibeVoice"]
+	path = external_plugins/VibeVoice
+	url = https://github.com/microsoft/VibeVoice.git
