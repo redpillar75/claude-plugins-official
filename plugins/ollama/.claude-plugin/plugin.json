@@ -1,0 +1,9 @@
+{
+  "name": "ollama",
+  "description": "Ollama local models plugin — run Qwen3, Llama 3.1, DeepSeek R1, and other open-source models locally. No API key required.",
+  "version": "1.0.0",
+  "author": { "name": "Ollama", "url": "https://ollama.com" },
+  "homepage": "https://ollama.com/library",
+  "license": "MIT",
+  "keywords": ["ollama", "local-llm", "qwen", "llama", "deepseek", "open-source", "offline"]
+}

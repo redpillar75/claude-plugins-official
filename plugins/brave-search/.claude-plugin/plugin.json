@@ -1,0 +1,9 @@
+{
+  "name": "brave-search",
+  "description": "Brave Search MCP plugin — real-time web search using Brave's privacy-first search API. Primary web search tool.",
+  "version": "1.0.0",
+  "author": { "name": "Brave", "url": "https://brave.com" },
+  "homepage": "https://api.search.brave.com/app/documentation",
+  "license": "MIT",
+  "keywords": ["brave", "search", "web-search", "privacy"]
+}

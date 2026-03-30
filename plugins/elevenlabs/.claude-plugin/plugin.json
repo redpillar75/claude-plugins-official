@@ -1,0 +1,9 @@
+{
+  "name": "elevenlabs",
+  "description": "ElevenLabs TTS plugin — text-to-speech synthesis and voice cloning using ElevenLabs' high-quality AI voice models.",
+  "version": "1.0.0",
+  "author": { "name": "ElevenLabs", "url": "https://elevenlabs.io" },
+  "homepage": "https://elevenlabs.io/docs/api-reference",
+  "license": "MIT",
+  "keywords": ["elevenlabs", "tts", "text-to-speech", "voice-cloning", "audio", "speech"]
+}

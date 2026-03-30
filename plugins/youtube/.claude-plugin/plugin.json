@@ -1,0 +1,9 @@
+{
+  "name": "youtube",
+  "description": "YouTube Data API plugin — search videos, fetch metadata, captions, channel info, and trending content via the YouTube Data API v3.",
+  "version": "1.0.0",
+  "author": { "name": "Google", "url": "https://developers.google.com/youtube" },
+  "homepage": "https://developers.google.com/youtube/v3",
+  "license": "MIT",
+  "keywords": ["youtube", "video", "search", "metadata", "google"]
+}

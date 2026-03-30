@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "poe": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "poe-mcp-server"],
+      "env": {
+        "POE_API_KEY": "${POE_API_KEY}"
+      }
+    }
+  }
+}

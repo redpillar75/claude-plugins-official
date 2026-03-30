@@ -1,0 +1,9 @@
+{
+  "name": "bland-ai",
+  "description": "Bland AI plugin — programmatic AI phone calls. Make outbound calls, build voice agents, and automate phone workflows (~$2 balance).",
+  "version": "1.0.0",
+  "author": { "name": "Bland AI", "url": "https://bland.ai" },
+  "homepage": "https://docs.bland.ai",
+  "license": "MIT",
+  "keywords": ["bland", "phone-calls", "voice-ai", "telephony", "outbound-calls", "ai"]
+}

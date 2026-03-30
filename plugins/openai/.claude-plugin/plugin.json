@@ -1,0 +1,9 @@
+{
+  "name": "openai",
+  "description": "OpenAI API plugin — GPT-4o-mini chat completions, DALL-E image generation, and Whisper audio transcription.",
+  "version": "1.0.0",
+  "author": { "name": "OpenAI", "url": "https://openai.com" },
+  "homepage": "https://platform.openai.com/docs",
+  "license": "MIT",
+  "keywords": ["openai", "gpt", "dall-e", "whisper", "ai", "image-gen", "transcription"]
+}

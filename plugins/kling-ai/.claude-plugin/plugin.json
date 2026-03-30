@@ -1,0 +1,9 @@
+{
+  "name": "kling-ai",
+  "description": "Kling AI plugin — image-to-video and text-to-video generation using Kling AI's generative video models.",
+  "version": "1.0.0",
+  "author": { "name": "Kuaishou / Kling AI", "url": "https://klingai.com" },
+  "homepage": "https://docs.klingai.com",
+  "license": "MIT",
+  "keywords": ["kling", "video-generation", "image-to-video", "text-to-video", "ai", "generative"]
+}

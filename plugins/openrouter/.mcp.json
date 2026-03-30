@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "openrouter": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "openrouter-mcp-server"],
+      "env": {
+        "OPENROUTER_API_KEY": "${OPENROUTER_API_KEY}"
+      }
+    }
+  }
+}

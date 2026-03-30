@@ -1,0 +1,9 @@
+{
+  "name": "twitter",
+  "description": "X/Twitter MCP plugin — read tweets, search timelines, monitor mentions, and fetch user profiles. Uses OAuth 1.0a + OAuth 2.0. Posting blocked on free tier (read-only).",
+  "version": "1.0.0",
+  "author": { "name": "X Corp", "url": "https://developer.x.com" },
+  "homepage": "https://developer.x.com/en/docs",
+  "license": "MIT",
+  "keywords": ["twitter", "x", "tweets", "social-media", "oauth", "read-only"]
+}

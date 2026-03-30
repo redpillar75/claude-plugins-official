@@ -1,0 +1,9 @@
+{
+  "name": "godaddy",
+  "description": "GoDaddy Domain Management plugin — search, purchase, and manage domains; configure DNS records and SSL certificates via GoDaddy API.",
+  "version": "1.0.0",
+  "author": { "name": "GoDaddy", "url": "https://godaddy.com" },
+  "homepage": "https://developer.godaddy.com/doc",
+  "license": "MIT",
+  "keywords": ["godaddy", "domains", "dns", "domain-management", "ssl"]
+}

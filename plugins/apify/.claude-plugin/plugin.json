@@ -1,0 +1,9 @@
+{
+  "name": "apify",
+  "description": "Apify web scraping platform plugin — run actors to scrape Reddit, Twitter, Instagram, and any website. Access thousands of pre-built scrapers.",
+  "version": "1.0.0",
+  "author": { "name": "Apify", "url": "https://apify.com" },
+  "homepage": "https://docs.apify.com/api/v2",
+  "license": "MIT",
+  "keywords": ["apify", "scraping", "web-scraping", "reddit", "twitter", "automation"]
+}

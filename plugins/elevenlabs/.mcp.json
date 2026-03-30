@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "elevenlabs": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@elevenlabs/mcp"],
+      "env": {
+        "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "poe",
+  "description": "Poe API plugin — access multiple LLMs including Claude Opus 4.6, Sonnet 4.5, GPT-4, Gemini, and more via Poe's unified API.",
+  "version": "1.0.0",
+  "author": { "name": "Quora / Poe", "url": "https://poe.com" },
+  "homepage": "https://creator.poe.com/docs/poe-protocol-specification",
+  "license": "MIT",
+  "keywords": ["poe", "llm", "claude", "gpt", "gemini", "multi-model", "ai"]
+}

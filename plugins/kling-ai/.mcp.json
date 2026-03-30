@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "kling-ai": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "kling-ai-mcp-server"],
+      "env": {
+        "KLING_ACCESS_KEY": "${KLING_ACCESS_KEY}",
+        "KLING_SECRET_KEY": "${KLING_SECRET_KEY}"
+      }
+    }
+  }
+}

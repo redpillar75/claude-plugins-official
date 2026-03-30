@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "bland-ai": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "bland-ai-mcp-server"],
+      "env": {
+        "BLAND_AI_API_KEY": "${BLAND_AI_API_KEY}"
+      }
+    }
+  }
+}

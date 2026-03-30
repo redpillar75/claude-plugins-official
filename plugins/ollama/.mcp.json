@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ollama": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "ollama-mcp-server"],
+      "env": {
+        "OLLAMA_HOST": "${OLLAMA_HOST:-http://localhost:11434}"
+      }
+    }
+  }
+}

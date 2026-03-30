@@ -1,0 +1,9 @@
+{
+  "name": "openrouter",
+  "description": "OpenRouter multi-model plugin — access Gemini, GPT-4.1, DeepSeek, Llama, Mistral, and hundreds of free and paid models through a single OpenAI-compatible API.",
+  "version": "1.0.0",
+  "author": { "name": "OpenRouter", "url": "https://openrouter.ai" },
+  "homepage": "https://openrouter.ai/docs",
+  "license": "MIT",
+  "keywords": ["openrouter", "multi-model", "gemini", "gpt", "llama", "deepseek", "ai"]
+}

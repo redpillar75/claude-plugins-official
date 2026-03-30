@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "godaddy": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "godaddy-mcp-server"],
+      "env": {
+        "GODADDY_API_KEY": "${GODADDY_API_KEY}",
+        "GODADDY_API_SECRET": "${GODADDY_API_SECRET}"
+      }
+    }
+  }
+}
