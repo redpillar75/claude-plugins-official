@@ -872,6 +872,24 @@
                 "deepseek",
                 "offline"
             ]
+        },
+        {
+            "name": "gitnexus",
+            "description": "GitNexus codebase knowledge graph \u2014 index repos and query them via MCP. Supports impact analysis, code search, and graph traversal across 14 languages.",
+            "version": "1.4.10",
+            "author": {
+                "name": "Abhigyan Patwari",
+                "url": "https://github.com/abhigyanpatwari"
+            },
+            "source": "./external_plugins/GitNexus",
+            "category": "development",
+            "keywords": [
+                "knowledge-graph",
+                "codebase-analysis",
+                "mcp",
+                "code-search",
+                "impact-analysis"
+            ]
         }
     ]
 }
