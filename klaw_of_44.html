@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLAW OF 44 – RED PILLAR</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Courier New', monospace;
+  }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+canvas.width  = 1920;
+canvas.height = 1080;
+
+// ─── Colour palette ───────────────────────────────────────────────
+const C = {
+  bg:      '#000008',
+  red:     '#FF0033',
+  redDim:  '#880022',
+  blue:    '#0077FF',
+  blueDim: '#003388',
+  purple:  '#8800FF',
+  purDim:  '#440088',
+  gold:    '#FFD700',
+  goldDim: '#996600',
+  white:   '#FFFFFF',
+  cyan:    '#00CCFF',
+};
+
+// ─── Timing ───────────────────────────────────────────────────────
+let t = 0;              // frame counter
+const FPS = 60;
+
+// ─── Particles ────────────────────────────────────────────────────
+class Particle {
+  constructor(x, y, angle, speed, color, life) {
+    this.x = x; this.y = y;
+    this.vx = Math.cos(angle) * speed;
+    this.vy = Math.sin(angle) * speed;
+    this.color = color;
+    this.life  = life;
+    this.maxLife = life;
+    this.size = Math.random() * 3 + 1;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy += 0.04;
+    this.vx *= 0.98;
+    this.life--;
+    return this.life > 0;
+  }
+  draw() {
+    const a = this.life / this.maxLife;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.fillStyle   = this.color;
+    ctx.shadowColor = this.color;
+    ctx.shadowBlur  = 8;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size * a, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+let particles = [];
+
+function burst(x, y, count, colors) {
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
+    const speed = Math.random() * 8 + 2;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const life  = Math.floor(Math.random() * 60 + 40);
+    particles.push(new Particle(x, y, angle, speed, color, life));
+  }
+}
+
+// ─── Grid lines ───────────────────────────────────────────────────
+function drawGrid(alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = C.blue;
+  ctx.lineWidth   = 0.5;
+  const spacing = 80;
+  const vp = 540;    // vanishing point y
+  const cx = 960;
+
+  // horizontal lines (perspective)
+  for (let row = 0; row <= 20; row++) {
+    const y = vp + row * 80;
+    if (y > 1080) break;
+    const pct = row / 20;
+    ctx.globalAlpha = alpha * pct * 0.6;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(1920, y);
+    ctx.stroke();
+  }
+  // vertical lines (perspective)
+  for (let col = -16; col <= 16; col++) {
+    ctx.globalAlpha = alpha * 0.3;
+    const baseX = cx + col * spacing;
+    ctx.beginPath();
+    ctx.moveTo(cx, vp);
+    ctx.lineTo(baseX, 1080);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// ─── Scan-line overlay ────────────────────────────────────────────
+function drawScanlines() {
+  ctx.save();
+  ctx.globalAlpha = 0.06;
+  ctx.fillStyle   = '#000';
+  for (let y = 0; y < 1080; y += 4) {
+    ctx.fillRect(0, y, 1920, 2);
+  }
+  ctx.restore();
+}
+
+// ─── Glitch strip ─────────────────────────────────────────────────
+function glitch(intensity) {
+  if (Math.random() > intensity) return;
+  const strips = Math.floor(Math.random() * 5) + 1;
+  for (let i = 0; i < strips; i++) {
+    const y = Math.random() * 1080;
+    const h = Math.random() * 12 + 2;
+    const dx = (Math.random() - 0.5) * 40;
+    ctx.save();
+    const img = ctx.getImageData(0, y, 1920, h);
+    ctx.putImageData(img, dx, y);
+    ctx.restore();
+  }
+}
+
+// ─── Hexagon ornament ─────────────────────────────────────────────
+function hexPath(cx, cy, r) {
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = (Math.PI / 3) * i - Math.PI / 6;
+    i === 0
+      ? ctx.moveTo(cx + r * Math.cos(a), cy + r * Math.sin(a))
+      : ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+  }
+  ctx.closePath();
+}
+
+function drawHexRing(cx, cy, r, color, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = color;
+  ctx.lineWidth   = 2;
+  ctx.shadowColor = color;
+  ctx.shadowBlur  = 16;
+  hexPath(cx, cy, r);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// ─── Corner brackets ──────────────────────────────────────────────
+function drawCornerBrackets(alpha) {
+  const blen = 80, bpad = 40;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = C.gold;
+  ctx.lineWidth   = 3;
+  ctx.shadowColor = C.gold;
+  ctx.shadowBlur  = 12;
+  const corners = [
+    [bpad, bpad, 1, 1],
+    [1920 - bpad, bpad, -1, 1],
+    [bpad, 1080 - bpad, 1, -1],
+    [1920 - bpad, 1080 - bpad, -1, -1],
+  ];
+  corners.forEach(([x, y, dx, dy]) => {
+    ctx.beginPath();
+    ctx.moveTo(x, y + dy * blen);
+    ctx.lineTo(x, y);
+    ctx.lineTo(x + dx * blen, y);
+    ctx.stroke();
+  });
+  ctx.restore();
+}
+
+// ─── Energy arc ───────────────────────────────────────────────────
+function drawArc(cx, cy, r, startA, endA, color, alpha, width) {
+  ctx.save();
+  ctx.globalAlpha  = alpha;
+  ctx.strokeStyle  = color;
+  ctx.lineWidth    = width;
+  ctx.shadowColor  = color;
+  ctx.shadowBlur   = 24;
+  ctx.lineCap      = 'round';
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, startA, endA);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// ─── Gradient text helper ─────────────────────────────────────────
+function gradientText(text, x, y, size, c1, c2, alpha, blur) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.font        = `900 ${size}px 'Courier New', monospace`;
+  ctx.textAlign   = 'center';
+  ctx.textBaseline = 'middle';
+  const grd = ctx.createLinearGradient(x - 600, y - size / 2, x + 600, y + size / 2);
+  grd.addColorStop(0,   c1);
+  grd.addColorStop(0.5, C.white);
+  grd.addColorStop(1,   c2);
+  ctx.fillStyle   = grd;
+  ctx.shadowColor = c1;
+  ctx.shadowBlur  = blur;
+  ctx.fillText(text, x, y);
+  ctx.restore();
+}
+
+// ─── Gold outline text ────────────────────────────────────────────
+function outlineText(text, x, y, size, alpha) {
+  ctx.save();
+  ctx.globalAlpha  = alpha;
+  ctx.font         = `900 ${size}px 'Courier New', monospace`;
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.strokeStyle  = C.gold;
+  ctx.lineWidth    = 4;
+  ctx.shadowColor  = C.gold;
+  ctx.shadowBlur   = 20;
+  ctx.lineJoin     = 'round';
+  ctx.strokeText(text, x, y);
+  ctx.restore();
+}
+
+// ─── Divider bar ─────────────────────────────────────────────────
+function drawDivider(y, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  const grd = ctx.createLinearGradient(0, y, 1920, y);
+  grd.addColorStop(0,    'transparent');
+  grd.addColorStop(0.2,  C.gold);
+  grd.addColorStop(0.5,  C.white);
+  grd.addColorStop(0.8,  C.gold);
+  grd.addColorStop(1,    'transparent');
+  ctx.fillStyle   = grd;
+  ctx.shadowColor = C.gold;
+  ctx.shadowBlur  = 12;
+  ctx.fillRect(0, y - 1, 1920, 2);
+  ctx.restore();
+}
+
+// ─── Data-stream sidebar ─────────────────────────────────────────
+const dataChars = '01KLAWREDPILLAR4⬡⬢◈▲▼◆'.split('');
+let dataStreamY = [];
+for (let col = 0; col < 6; col++) dataStreamY.push(Math.random() * 1080);
+
+function drawDataStreams(alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha * 0.35;
+  ctx.font        = '14px Courier New';
+  ctx.textAlign   = 'center';
+  [80, 160, 1760, 1840, 40, 1880].forEach((x, i) => {
+    const ch = dataChars[Math.floor(Math.random() * dataChars.length)];
+    dataStreamY[i] = (dataStreamY[i] + 3) % 1080;
+    ctx.fillStyle   = i < 2 ? C.red : (i < 4 ? C.blue : C.gold);
+    ctx.shadowColor = ctx.fillStyle;
+    ctx.shadowBlur  = 6;
+    ctx.fillText(ch, x, dataStreamY[i]);
+  });
+  ctx.restore();
+}
+
+// ─── Phase helpers ────────────────────────────────────────────────
+function easeIn(v)    { return v * v; }
+function easeOut(v)   { return 1 - (1 - v) * (1 - v); }
+function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
+function phase(start, end) {
+  return clamp((t - start) / (end - start), 0, 1);
+}
+
+// ─── Main render ─────────────────────────────────────────────────
+function draw() {
+  const W = 1920, H = 1080, cx = W / 2, cy = H / 2;
+
+  // ---- Background
+  ctx.fillStyle = C.bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // ---- Radial vignette
+  const vig = ctx.createRadialGradient(cx, cy, 200, cx, cy, 900);
+  vig.addColorStop(0,   'transparent');
+  vig.addColorStop(1,   'rgba(0,0,0,0.7)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, W, H);
+
+  // ======= PHASE 0-60: boot-up grid ================================
+  const p0 = phase(0, 60);
+  drawGrid(easeOut(p0) * 0.5);
+
+  // ======= PHASE 20-80: energy rings ===============================
+  const p1 = easeOut(phase(20, 80));
+  [300, 250, 200].forEach((r, i) => {
+    const colors = [C.purple, C.blue, C.red];
+    drawArc(cx, cy, r * p1,
+      t * 0.02 + i * (Math.PI / 1.5),
+      t * 0.02 + i * (Math.PI / 1.5) + Math.PI * 1.3,
+      colors[i], p1 * 0.8, 3 - i * 0.5);
+  });
+
+  // ======= PHASE 30-100: hex ornaments =============================
+  const p2 = easeOut(phase(30, 100));
+  drawHexRing(cx, cy, 380 * p2, C.gold,   p2 * 0.7);
+  drawHexRing(cx, cy, 340 * p2, C.purple, p2 * 0.4);
+
+  // ======= PHASE 0-30: burst particles =============================
+  if (t === 1) burst(cx, cy, 120, [C.red, C.blue, C.purple, C.gold]);
+  if (t === 30) burst(cx, cy, 80, [C.gold, C.white]);
+
+  // ======= Particle update =========================================
+  particles = particles.filter(p => { const alive = p.update(); p.draw(); return alive; });
+
+  // ======= Corner brackets =========================================
+  drawCornerBrackets(easeOut(phase(40, 100)));
+
+  // ======= Data streams ============================================
+  drawDataStreams(phase(10, 60));
+
+  // ======= PHASE 50-130: "KLAW OF 44" main title ==================
+  const titleP = easeOut(phase(50, 120));
+  if (titleP > 0) {
+    // Shadow/ghost offset for depth
+    gradientText('KLAW OF 44', cx + 4, cy - 80 + 4, 180, C.redDim, C.purDim, titleP * 0.4, 0);
+    // Main title
+    gradientText('KLAW OF 44', cx, cy - 80, 180, C.red, C.purple, titleP, 60);
+    outlineText('KLAW OF 44',  cx, cy - 80, 180, titleP * 0.9);
+
+    // Glitch duplicate
+    if (t % 7 < 2) {
+      const gx = (Math.random() - 0.5) * 10;
+      ctx.save();
+      ctx.globalAlpha = 0.25 * titleP;
+      ctx.font        = `900 180px 'Courier New', monospace`;
+      ctx.textAlign   = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle   = C.cyan;
+      ctx.fillText('KLAW OF 44', cx + gx, cy - 80);
+      ctx.restore();
+    }
+  }
+
+  // ======= PHASE 80-160: divider bar ===============================
+  const divP = easeOut(phase(80, 150));
+  drawDivider(cy + 30, divP);
+
+  // ======= PHASE 100-170: "RED PILLAR" subtitle ====================
+  const subP = easeOut(phase(100, 160));
+  if (subP > 0) {
+    gradientText('RED PILLAR', cx, cy + 120, 90, C.blue, C.purple, subP, 40);
+    outlineText('RED PILLAR',  cx, cy + 120, 90, subP * 0.7);
+  }
+
+  // ======= PHASE 120-200: tagline =================================
+  const tagP = easeOut(phase(130, 190));
+  if (tagP > 0) {
+    ctx.save();
+    ctx.globalAlpha  = tagP;
+    ctx.font         = `400 28px 'Courier New', monospace`;
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle    = C.gold;
+    ctx.shadowColor  = C.gold;
+    ctx.shadowBlur   = 10;
+    ctx.letterSpacing = '0.4em';
+    ctx.fillText('[ F U T U R E  I S  N O W ]', cx, cy + 210);
+    ctx.restore();
+  }
+
+  // ======= PHASE 160+: spinning outer ring decoration ===============
+  const spinP = phase(80, 180);
+  if (spinP > 0) {
+    const spinR = 440;
+    const segments = 24;
+    for (let s = 0; s < segments; s++) {
+      const a1 = (Math.PI * 2 / segments) * s + t * 0.008;
+      const a2 = a1 + (Math.PI * 2 / segments) * 0.6;
+      const colIdx = s % 3;
+      const col = [C.gold, C.red, C.blue][colIdx];
+      drawArc(cx, cy, spinR, a1, a2, col, spinP * 0.6, 2);
+    }
+  }
+
+  // ======= Counter-spin inner dashes ================================
+  if (spinP > 0) {
+    const innerR = 400;
+    const segs   = 16;
+    for (let s = 0; s < segs; s++) {
+      const a1 = (Math.PI * 2 / segs) * s - t * 0.012;
+      const a2 = a1 + (Math.PI * 2 / segs) * 0.4;
+      drawArc(cx, cy, innerR, a1, a2, C.purple, spinP * 0.5, 1.5);
+    }
+  }
+
+  // ======= Pulsing center glow =====================================
+  const pulseScale = 1 + Math.sin(t * 0.08) * 0.15;
+  const pGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 160 * pulseScale);
+  pGlow.addColorStop(0,   `rgba(136,0,255,${0.15 * phase(20, 80)})`);
+  pGlow.addColorStop(0.5, `rgba(255,0,51,${0.08 * phase(20, 80)})`);
+  pGlow.addColorStop(1,   'transparent');
+  ctx.fillStyle = pGlow;
+  ctx.fillRect(0, 0, W, H);
+
+  // ======= Scanlines & glitch ======================================
+  drawScanlines();
+  glitch(0.04);
+
+  // ======= Looping particle re-bursts ==============================
+  if (t % 90 === 0 && t > 60) {
+    const side = Math.random() > 0.5 ? 200 : W - 200;
+    burst(side, H / 2, 40, [C.red, C.gold, C.purple]);
+  }
+
+  t++;
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>
