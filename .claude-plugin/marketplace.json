@@ -890,6 +890,25 @@
                 "code-search",
                 "impact-analysis"
             ]
+        },
+        {
+            "name": "external-plugin-vetting",
+            "description": "Skill for safely evaluating, installing, and registering external GitHub repos as Claude Code plugins. Covers pre-install vetting, submodule setup, MCP configuration, and marketplace registration.",
+            "version": "1.0.0",
+            "author": {
+                "name": "Anthropic",
+                "email": "support@anthropic.com"
+            },
+            "source": "./plugins/external-plugin-vetting",
+            "category": "development",
+            "strict": false,
+            "keywords": [
+                "plugin-install",
+                "submodule",
+                "mcp",
+                "vetting",
+                "marketplace"
+            ]
         }
     ]
 }
