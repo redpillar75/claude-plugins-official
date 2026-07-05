@@ -1,7 +1,26 @@
 ---
 name: code-explorer
-description: Deeply analyzes existing codebase features by tracing execution paths, mapping architecture layers, understanding patterns and abstractions, and documenting dependencies to inform new development
-tools: Glob, Grep, LS, Read, NotebookRead, WebFetch, TodoWrite, WebSearch, KillShell, BashOutput
+description: |
+  Traces how an existing feature works end-to-end — execution paths, architecture layers, patterns, and dependencies — to inform safe modification or extension. Use when the user asks "how does X work", "trace the code for Y", "explain this feature", or before modifying an unfamiliar part of the codebase.
+
+  <example>
+  Context: User needs to add refresh tokens but doesn't understand the existing auth flow.
+  user: "How does the current auth flow work? I need to add refresh token support."
+  assistant: "I'll use the code-explorer agent to trace the auth implementation fully before we touch anything."
+  <commentary>
+  Understanding existing implementation before modification prevents breaking changes — use code-explorer first.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is onboarding and wants to understand a core system.
+  user: "Can you explain how the data pipeline works in this codebase?"
+  assistant: "I'll use the code-explorer agent to trace the full pipeline from entry to storage and document how it fits together."
+  <commentary>
+  Code exploration for onboarding or deep understanding — the primary use case for code-explorer.
+  </commentary>
+  </example>
+tools: Glob, Grep, Read, WebFetch, WebSearch, Bash
 model: sonnet
 color: yellow
 ---

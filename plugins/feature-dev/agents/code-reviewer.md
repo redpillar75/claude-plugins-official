@@ -1,7 +1,26 @@
 ---
 name: code-reviewer
-description: Reviews code for bugs, logic errors, security vulnerabilities, code quality issues, and adherence to project conventions, using confidence-based filtering to report only high-priority issues that truly matter
-tools: Glob, Grep, LS, Read, NotebookRead, WebFetch, TodoWrite, WebSearch, KillShell, BashOutput
+description: |
+  Reviews code for bugs, security vulnerabilities, and project convention violations using confidence-based filtering to report only issues that truly matter. Use when the user says "review my code", "check my changes", or after writing a substantial feature or fix. Also trigger proactively before PR creation.
+
+  <example>
+  Context: User has finished implementing a new feature and wants validation.
+  user: "I've added the payment integration. Can you review it?"
+  assistant: "I'll use the code-reviewer agent to check your changes against project standards and flag any real issues."
+  <commentary>
+  Explicit review request after completing a feature — trigger code-reviewer to catch issues before they ship.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is about to open a pull request.
+  user: "I think I'm ready to create the PR for the auth refactor."
+  assistant: "Before we create the PR, I'll use the code-reviewer agent to make sure nothing slipped through."
+  <commentary>
+  Proactively review before PR creation — saves review cycle churn.
+  </commentary>
+  </example>
+tools: Glob, Grep, Read, WebFetch, WebSearch, Bash
 model: sonnet
 color: red
 ---

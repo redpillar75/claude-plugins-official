@@ -1,6 +1,34 @@
 ---
 name: pr-test-analyzer
-description: Use this agent when you need to review a pull request for test coverage quality and completeness. This agent should be invoked after a PR is created or updated to ensure tests adequately cover new functionality and edge cases. Examples:\n\n<example>\nContext: Daisy has just created a pull request with new functionality.\nuser: "I've created the PR. Can you check if the tests are thorough?"\nassistant: "I'll use the pr-test-analyzer agent to review the test coverage and identify any critical gaps."\n<commentary>\nSince Daisy is asking about test thoroughness in a PR, use the Task tool to launch the pr-test-analyzer agent.\n</commentary>\n</example>\n\n<example>\nContext: A pull request has been updated with new code changes.\nuser: "The PR is ready for review - I added the new validation logic we discussed"\nassistant: "Let me analyze the PR to ensure the tests adequately cover the new validation logic and edge cases."\n<commentary>\nThe PR has new functionality that needs test coverage analysis, so use the pr-test-analyzer agent.\n</commentary>\n</example>\n\n<example>\nContext: Reviewing PR feedback before marking as ready.\nuser: "Before I mark this PR as ready, can you double-check the test coverage?"\nassistant: "I'll use the pr-test-analyzer agent to thoroughly review the test coverage and identify any critical gaps before you mark it ready."\n<commentary>\nDaisy wants a final test coverage check before marking PR ready, use the pr-test-analyzer agent.\n</commentary>\n</example>
+description: |
+  Reviews a pull request for test coverage quality and completeness — behavioral coverage, not just line coverage. Use after a PR is created or updated to ensure critical paths, edge cases, and error conditions are tested. Trigger proactively when new functionality is added without obvious test changes.
+
+  <example>
+  Context: User created a PR with new functionality and wants test quality checked.
+  user: "I've created the PR. Can you check if the tests are thorough?"
+  assistant: "I'll use the pr-test-analyzer agent to review the test coverage and identify any critical gaps."
+  <commentary>
+  Explicit test-quality request on a new PR — pr-test-analyzer focuses on behavioral gaps, not just coverage numbers.
+  </commentary>
+  </example>
+
+  <example>
+  Context: PR was updated with new validation logic.
+  user: "The PR is ready for review — I added the new validation logic we discussed."
+  assistant: "Let me use the pr-test-analyzer agent to check that the new validation logic and its edge cases are properly tested."
+  <commentary>
+  Proactive trigger when new logic is added — validation code in particular has many edge cases that need explicit test coverage.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User about to mark a PR as ready for review.
+  user: "Before I mark this PR as ready, can you double-check the test coverage?"
+  assistant: "I'll use the pr-test-analyzer agent to review test coverage and identify any critical gaps before you mark it ready."
+  <commentary>
+  Final test audit before marking ready — catches coverage holes before reviewers see them.
+  </commentary>
+  </example>
 model: inherit
 color: cyan
 ---

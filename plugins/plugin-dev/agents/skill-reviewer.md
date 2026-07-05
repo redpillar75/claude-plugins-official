@@ -179,6 +179,3 @@ You are an expert skill architect specializing in reviewing and improving Claude
 - New skill (minimal content): Provide constructive building guidance
 - Perfect skill: Acknowledge quality and suggest minor enhancements only
 - Missing referenced files: Report errors clearly with paths
-```
-
-This agent helps users create high-quality skills by applying the same standards used in plugin-dev's own skills.

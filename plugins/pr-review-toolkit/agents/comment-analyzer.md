@@ -1,6 +1,34 @@
 ---
 name: comment-analyzer
-description: Use this agent when you need to analyze code comments for accuracy, completeness, and long-term maintainability. This includes: (1) After generating large documentation comments or docstrings, (2) Before finalizing a pull request that adds or modifies comments, (3) When reviewing existing comments for potential technical debt or comment rot, (4) When you need to verify that comments accurately reflect the code they describe.\n\n<example>\nContext: The user is working on a pull request that adds several documentation comments to functions.\nuser: "I've added documentation to these functions. Can you check if the comments are accurate?"\nassistant: "I'll use the comment-analyzer agent to thoroughly review all the comments in this pull request for accuracy and completeness."\n<commentary>\nSince the user has added documentation comments and wants them checked, use the comment-analyzer agent to verify their accuracy against the actual code.\n</commentary>\n</example>\n\n<example>\nContext: The user just asked to generate comprehensive documentation for a complex function.\nuser: "Add detailed documentation for this authentication handler function"\nassistant: "I've added the documentation. Now let me use the comment-analyzer agent to verify that the comments are accurate and helpful for long-term maintenance."\n<commentary>\nAfter generating large documentation comments, proactively use the comment-analyzer to ensure quality.\n</commentary>\n</example>\n\n<example>\nContext: The user is preparing to create a pull request with multiple code changes and comments.\nuser: "I think we're ready to create the PR now"\nassistant: "Before creating the pull request, let me use the comment-analyzer agent to review all the comments we've added or modified to ensure they're accurate and won't create technical debt."\n<commentary>\nBefore finalizing a PR, use the comment-analyzer to review all comment changes.\n</commentary>\n</example>
+description: |
+  Analyzes code comments for accuracy, completeness, and long-term value. Use after generating large documentation blocks or docstrings, before finalizing a PR that adds or modifies comments, or when reviewing existing comments for comment rot.
+
+  <example>
+  Context: User added documentation comments to several functions and wants them verified.
+  user: "I've added documentation to these functions. Can you check if the comments are accurate?"
+  assistant: "I'll use the comment-analyzer agent to verify all the comments against the actual code."
+  <commentary>
+  Documentation comments are easy to write inaccurately — comment-analyzer cross-references each claim against the implementation.
+  </commentary>
+  </example>
+
+  <example>
+  Context: Assistant just generated comprehensive docs for a complex function.
+  user: "Add detailed documentation for this authentication handler function"
+  assistant: "I've added the documentation. Now I'll use the comment-analyzer agent to verify the comments are accurate and won't create debt."
+  <commentary>
+  Proactively run comment-analyzer after generating large documentation blocks — generated comments are especially prone to inaccuracy.
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is about to create a PR with significant comment changes.
+  user: "I think we're ready to create the PR now."
+  assistant: "Before creating the PR, I'll use the comment-analyzer agent to review all comments we've added or modified."
+  <commentary>
+  Pre-PR comment audit catches inaccurate documentation before it ships and becomes technical debt.
+  </commentary>
+  </example>
 model: inherit
 color: green
 ---

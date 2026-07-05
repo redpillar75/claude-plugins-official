@@ -1,3 +1,31 @@
+# claude-plugins-official
+
+This is the official Claude Code plugin marketplace repository. It is a monorepo containing:
+
+- **`plugins/`** — First-party plugins maintained in this repo (skills, agents, commands, hooks)
+- **`external_plugins/`** — Third-party repos installed as git submodules
+- **`.claude-plugin/marketplace.json`** — Registry of all plugins available for install
+
+## Working in this repo
+
+**Active branch**: `claude/install-davinci-magihuman-yPJbu` — all commits and pushes go here.
+
+**Adding an external plugin** (a repo cloned as a submodule):
+1. Clone into `external_plugins/<name>/`
+2. Add `.mcp.json` and `.claude-plugin/plugin.json` to that directory
+3. Register as a submodule: `git submodule add <url> external_plugins/<name>`
+4. Add entry to `.claude-plugin/marketplace.json`
+5. Commit and push
+
+**Adding an internal plugin** (skill/agent/command written here):
+1. Create `plugins/<plugin-name>/` with `.claude-plugin/plugin.json`
+2. Add `skills/`, `agents/`, `commands/`, `hooks/` subdirectories as needed
+3. Add entry to `.claude-plugin/marketplace.json`
+
+**After any commit**: Run `npx gitnexus analyze` to refresh the knowledge graph index, or let the PostToolUse hook do it automatically.
+
+**Never push to main directly.** Always push to the active feature branch above.
+
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
