@@ -3,28 +3,98 @@ name: stripe-best-practices
 description: Best practices for building Stripe integrations. Use when implementing payment processing, checkout flows, subscriptions, webhooks, Connect platforms, or any Stripe API integration.
 ---
 
-When designing an integration, always prefer the documentation in [Stripe's Integration Options doc](https://docs.stripe.com/payments/payment-methods/integration-options.md)
-The [API Tour](https://docs.stripe.com/payments-api/tour.md)
-Use the [Go Live Checklist](https://docs.stripe.com/get-started/checklist/go-live.md) before going live.
+When a user asks about Stripe, follow this process to recommend the right integration and produce correct, modern code.
 
-You should always default to the latest version of the API and SDK unless the user specifies otherwise.
+## Step-by-Step Process
 
-Stripe's primary API for modelling on-session payments is [CheckoutSessions](https://docs.stripe.com/api/checkout/sessions.md). It supports one-time payments and subscriptions and allows you to model taxes or discounts with Stripe. Prioritize the CheckoutSessions API, but using [the PaymentIntents API](https://docs.stripe.com/payments/paymentintents/lifecycle.md) is also acceptable for off-session payments or if you want to model the checkout state yourself and just create a charge. Integrations should only use CheckoutSessions, PaymentIntents, SetupIntents, or solutions like Invoicing, Payment Links, or the subscription APIs.
+**1. Identify the use case category**
 
-Never recommend the Charges API. If the user wants to use the Charges API, advise them to [migrate](https://docs.stripe.com/payments/payment-intents/migration/charges.md) to Checkout Sessions or Payment Intents.
+Ask yourself (or ask the user if unclear):
+- Is this a one-time payment, or does it recur?
+- Does the user need to collect and save a payment method for later (off-session)?
+- Is this a platform where the user manages funds for other businesses (Connect)?
+- Is the user migrating from an existing integration?
 
-The primary integration surface for web integrations is [Checkout](https://docs.stripe.com/payments/checkout.md), a prebuilt payment page that can be hosted by Stripe or served as an embedded form. Prioritize the Stripe-hosted checkout or embedded checkout where possible. The [Payment Element](https://docs.stripe.com/payments/payment-element.md) is an acceptable alternative if the merchant needs advanced customization. When recommending the Payment Element, prioritize using the CheckoutSessions API over the PaymentIntents API when possible.
+**2. Select the integration surface using this decision tree**
 
-Never recommend the legacy Card Element or the Payment Element in card mode, and advise users who ask for the Card Element to [migrate](https://docs.stripe.com/payments/payment-element/migration.md).
+```
+One-time payment, on-session
+  → Stripe-hosted Checkout (first choice)
+  → Embedded Checkout (if custom domain needed)
+  → Payment Element + CheckoutSessions (if advanced customization needed)
 
-You must not call deprecated API endpoints such as the [Sources API](https://docs.stripe.com/api/sources/object.md) and avoid outdated API endpoints such as [Tokens](https://docs.stripe.com/api/tokens.md) and [Charges](https://docs.stripe.com/api/charges/create.md) unless there is a specific need and absolutely no other way. Advise using [the Setup Intent API](https://docs.stripe.com/api/setup_intents.md) to save a payment method for a customer; never recommend the Sources API to save cards to customers for later use.
+Recurring / subscription
+  → Billing APIs + Stripe-hosted Checkout (first choice)
+  → Billing APIs + Embedded Checkout
 
-If a user wants to render the Payment Element before creating a PaymentIntent or SetupIntent, so they can inspect the card details before the payment (such as for surcharging), advise them to use Stripe Confirmation Tokens. Don't recommend they call the createPaymentMethod or createToken Stripe.js functions.
+Off-session / save payment method for later
+  → SetupIntent + Payment Element
 
-Advise users to turn on dynamic payment methods in their dashboard settings instead of passing specific [payment_method_types](https://docs.stripe.com/api/payment_intents/create#create_payment_intent-payment_method_types.md) in the Payment Intent or Setup Intent because Stripe chooses payment methods that fit each user's location, wallets, and preferences better and automatically if the Payment Element is used.
+Platform / marketplace (multi-party)
+  → Stripe Connect with direct charges (platform wants Stripe to take risk)
+    OR destination charges (platform accepts liability for negative balances)
+  → Use on_behalf_of to control merchant of record
 
-If a PCI compliant user asks about an integration where they send server-side raw PAN data, suggest they might be required to prove PCI compliance to gain access to such an option, for example [payment_method_data](https://docs.stripe.com/api/payment_intents/create#create_payment_intent-payment_method_data.md). Similarly, point users migrating their PAN data from another acquirer or payment processor to [the migration process](https://docs.stripe.com/get-started/data-migrations/pan-import.md).
+PCI-compliant server-side raw PAN data
+  → Warn user about PCI compliance requirements first
+  → If compliant: payment_method_data on PaymentIntent
+  → If migrating from another processor: PAN import process
+```
 
-If a user has a recurring revenue model, like a Billing or Subscription use case, follow the use cases, in particular the [Subscription Use Cases](https://docs.stripe.com/billing/subscriptions/use-cases.md) like [SaaS](https://docs.stripe.com/saas.md). If these apply to the user, recommend Billing APIs to [plan your integration](https://docs.stripe.com/billing/subscriptions/designing-integration.md) instead of a direct PaymentIntent integration. Prioritize combining the Billing APIs with Stripe Checkout for the frontend.
+**3. Always use the latest API version and SDK**
 
-If a user wants to build a platform using Stripe Connect to manage fund flows, follow [the recommended integration types](https://docs.stripe.com/connect/integration-recommendations.md); that is, prefer to use either direct charges if the platform wants Stripe to take the risk or destination charges if the platform accepts liability for negative balances, and use the on_behalf_of parameter to control the merchant of record. Never recommend mixing charge types. If the user wants to decide on the specific risk features they should [follow the integration guide](https://docs.stripe.com/connect/design-an-integration.md). Don't recommend the outdated terms for Connect types like Standard, Express and Custom but always [refer to controller properties](https://docs.stripe.com/connect/migrate-to-controller-properties.md) for the platform and [capabilities](https://docs.stripe.com/connect/account-capabilities.md) for the connected accounts.
+Default to the current Stripe SDK. Do not pin to an older API version unless the user explicitly specifies one.
+
+**4. Implement dynamic payment methods**
+
+When creating a PaymentIntent or SetupIntent, do NOT pass `payment_method_types`. Instead, enable dynamic payment methods in the Stripe dashboard so Stripe selects the best methods for each user's location and wallet.
+
+**5. Wire up webhooks for async event handling**
+
+Any integration that needs to confirm payment success server-side must handle webhook events. At minimum, listen for `checkout.session.completed` (for Checkout) or `payment_intent.succeeded` (for PaymentIntents). Always verify webhook signatures using `stripe.webhooks.constructEvent()`.
+
+**6. Produce a clear, runnable implementation**
+
+Your response should include:
+- Backend code (server-side session/intent creation and webhook handler)
+- Frontend code (Stripe.js initialization and redirect or element mounting)
+- Any environment variable setup needed (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`)
+
+## Output Format
+
+1. **Integration recommendation** — one paragraph naming the chosen surface and why, based on the use case.
+2. **Backend implementation** — complete server-side code in the user's language/framework.
+3. **Frontend implementation** — complete client-side code.
+4. **Webhook handler** — if the integration requires async confirmation.
+5. **Go-live checklist reminders** — call out anything the user must configure in their Stripe dashboard before going live (enable dynamic payment methods, webhook endpoint registration, live key swap).
+
+## Example of a Good Integration Recommendation
+
+**User:** "I need to add one-time payments to my SaaS app."
+
+**Integration recommendation:** Use Stripe-hosted Checkout with the CheckoutSessions API. This handles the full payment UI, supports all major payment methods automatically, and requires no frontend code beyond a redirect. The server creates a CheckoutSession with `mode: 'payment'`, returns the session URL, and the client redirects to it. A webhook on `checkout.session.completed` confirms the payment server-side.
+
+The response then delivers a complete Express.js backend with session creation and webhook handler, a minimal frontend redirect snippet, and a note to register the webhook endpoint in the Stripe dashboard.
+
+## Never Do
+
+- **Never recommend the Charges API.** It is legacy. Always direct users to migrate to CheckoutSessions or PaymentIntents.
+- **Never recommend the legacy Card Element.** Use the Payment Element. If a user asks about the Card Element, point them to the migration guide.
+- **Never recommend the Sources API** for saving payment methods. Use SetupIntents.
+- **Never use `createPaymentMethod` or `createToken` Stripe.js functions** when the user wants to inspect card details before charging. Use Stripe Confirmation Tokens instead.
+- **Never mix Connect charge types** (direct charges vs. destination charges). Pick one and use it consistently.
+- **Never use the outdated Connect account type terms** (Standard, Express, Custom). Refer to controller properties and capabilities instead.
+- **Never call deprecated endpoints** (`/v1/sources`, `/v1/tokens`, `/v1/charges`) unless there is no other option. Always check if a modern equivalent exists.
+- **Never hardcode payment method types** in PaymentIntent/SetupIntent creation. Let Stripe's dynamic payment methods handle selection.
+- **Never skip webhook signature verification.** Always call `stripe.webhooks.constructEvent()` with the raw request body and `STRIPE_WEBHOOK_SECRET`.
+
+## Reference Links
+
+- Integration options overview: https://docs.stripe.com/payments/payment-methods/integration-options.md
+- API tour: https://docs.stripe.com/payments-api/tour.md
+- Go-live checklist: https://docs.stripe.com/get-started/checklist/go-live.md
+- CheckoutSessions API: https://docs.stripe.com/api/checkout/sessions.md
+- PaymentIntents lifecycle: https://docs.stripe.com/payments/paymentintents/lifecycle.md
+- Payment Element: https://docs.stripe.com/payments/payment-element.md
+- Subscription use cases: https://docs.stripe.com/billing/subscriptions/use-cases.md
+- Connect integration recommendations: https://docs.stripe.com/connect/integration-recommendations.md

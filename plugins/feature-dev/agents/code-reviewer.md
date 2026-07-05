@@ -1,6 +1,25 @@
 ---
 name: code-reviewer
-description: Reviews code for bugs, logic errors, security vulnerabilities, code quality issues, and adherence to project conventions, using confidence-based filtering to report only high-priority issues that truly matter
+description: |
+  Reviews code for bugs, logic errors, security vulnerabilities, code quality issues, and adherence to project conventions, using confidence-based filtering to report only high-priority issues that truly matter. Use this agent after writing or modifying code to catch real issues before committing.
+
+  <example>
+  Context: Developer just implemented a new feature and wants a quality check.
+  user: "I've finished the authentication module. Can you review it?"
+  assistant: "I'll use the code-reviewer agent to check for bugs and project convention compliance."
+  <commentary>
+  Code was just written — review before committing to catch issues early.
+  </commentary>
+  </example>
+
+  <example>
+  Context: The feature-dev command is running Phase 6 quality review.
+  user: "Review the implementation for simplicity and DRY principles"
+  assistant: "I'll launch the code-reviewer agent focused on simplicity and code duplication."
+  <commentary>
+  Parallel reviewers each focus on a different lens: simplicity, correctness, conventions.
+  </commentary>
+  </example>
 tools: Glob, Grep, LS, Read, NotebookRead, WebFetch, TodoWrite, WebSearch, KillShell, BashOutput
 model: sonnet
 color: red

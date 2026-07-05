@@ -1,6 +1,25 @@
 ---
 name: code-architect
-description: Designs feature architectures by analyzing existing codebase patterns and conventions, then providing comprehensive implementation blueprints with specific files to create/modify, component designs, data flows, and build sequences
+description: |
+  Designs feature architectures by analyzing existing codebase patterns and conventions, then providing comprehensive implementation blueprints with specific files to create/modify, component designs, data flows, and build sequences. Use this agent to get a concrete implementation plan before writing any code.
+
+  <example>
+  Context: Developer is about to implement a new feature and wants an architecture plan.
+  user: "I need to add a real-time notification system to the app"
+  assistant: "I'll launch the code-architect agent to analyze existing patterns and design the architecture."
+  <commentary>
+  New feature requires studying existing code patterns first, then producing a concrete blueprint.
+  </commentary>
+  </example>
+
+  <example>
+  Context: The feature-dev command is running Phase 4 architecture design.
+  user: "Design a minimal-change approach to adding OAuth login"
+  assistant: "I'll use the code-architect agent to design an OAuth integration that minimizes changes to existing code."
+  <commentary>
+  Architecture agent produces a phased implementation plan the developer can review and approve.
+  </commentary>
+  </example>
 tools: Glob, Grep, LS, Read, NotebookRead, WebFetch, TodoWrite, WebSearch, KillShell, BashOutput
 model: sonnet
 color: green
