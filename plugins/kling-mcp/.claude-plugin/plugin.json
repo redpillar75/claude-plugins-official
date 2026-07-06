@@ -1,0 +1,21 @@
+{
+  "name": "kling-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server for Kling AI video and image generation. Generate stunning AI videos and images directly from Claude using Kling's creative tools.",
+  "author": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "keywords": [
+    "mcp",
+    "kling",
+    "video-generation",
+    "image-generation",
+    "ai-content",
+    "creative-tools"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redpillar75/claude-plugins-official"
+  }
+}

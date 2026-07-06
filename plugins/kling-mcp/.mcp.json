@@ -1,0 +1,12 @@
+{
+  "kling": {
+    "type": "command",
+    "command": "npx",
+    "args": ["-y", "mcp-kling@latest"],
+    "env": {
+      "KLING_ACCESS_KEY": "${KLING_ACCESS_KEY}",
+      "KLING_SECRET_KEY": "${KLING_SECRET_KEY}"
+    },
+    "description": "Kling AI Video and Image Generation MCP Server"
+  }
+}
