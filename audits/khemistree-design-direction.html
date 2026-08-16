@@ -1,0 +1,621 @@
+<title>KhemisTree Design Direction</title>
+<style>
+  :root {
+    /* ground */
+    --obsidian:   #0B0A07;
+    --raised:     #14120C;
+    --raised-2:   #1C1912;
+    --hairline:   #302B1E;
+    --hairline-2: #221E15;
+
+    /* brand — pulled from the KhemisTree mark */
+    --gold-deep:  #8C6A1E;
+    --gold:       #C9A227;
+    --gold-lit:   #F2D98A;
+    --chrome:     #C9CDD4;
+
+    /* release — pulled from the VLTRN cover */
+    --vltrn-blue: #2F6FD0;
+    --vltrn-orng: #F07A22;
+    --nebula:     #7B3FA0;
+
+    /* type */
+    --ink:        #EDE8DA;
+    --ink-2:      #B5AE9B;
+    --ink-3:      #7E7767;
+
+    --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--obsidian);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 4.5rem 1.5rem 6rem; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.7rem, 7.5vw, 4.4rem);
+    line-height: 1.0;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    margin: 1rem 0 1.2rem;
+    background: linear-gradient(96deg, var(--chrome) 0%, var(--gold-lit) 48%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .standfirst { font-size: 1.16rem; color: var(--ink-2); max-width: 60ch; margin: 0; }
+
+  section { margin-top: 4.25rem; }
+
+  .sec-label {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 1.4rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.95rem;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+    margin: 0 0 0.7rem;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 1.8rem 0 0.5rem;
+    color: var(--gold-lit);
+  }
+
+  p { max-width: 66ch; color: var(--ink-2); margin: 0 0 1rem; }
+  p strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--ink); font-style: italic; }
+
+  ul.moves { margin: 0.6rem 0 0; padding-left: 1.15rem; max-width: 66ch; }
+  ul.moves li { color: var(--ink-2); margin-bottom: 0.45rem; }
+  ul.moves li strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- specimen frame ---------- */
+
+  .specimen { border: 1px solid var(--hairline); background: var(--raised); margin: 1.5rem 0; }
+  .specimen-cap {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .specimen-body { padding: 1.5rem; }
+
+  /* ---------- palette ---------- */
+
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(126px, 1fr)); gap: 1px; background: var(--hairline); }
+  .sw { background: var(--raised); padding: 0; }
+  .sw .chipcolor { height: 74px; display: block; }
+  .sw .meta { padding: 0.6rem 0.7rem; }
+  .sw .nm { font-size: 0.82rem; color: var(--ink); display: block; }
+  .sw .hx {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-3);
+    text-transform: uppercase; display: block; margin-top: 0.1rem;
+  }
+
+  /* ---------- type scale ---------- */
+
+  .typerow { border-bottom: 1px solid var(--hairline-2); padding: 0.9rem 0; display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: baseline; }
+  .typerow:last-child { border-bottom: 0; }
+  .typerow .spec { font-family: var(--font-mono); font-size: 0.66rem; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; }
+  .t-display { font-family: var(--font-display); font-size: 2.1rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; color: var(--ink); }
+  .t-h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+  .t-body { font-family: var(--font-body); font-size: 1rem; color: var(--ink-2); }
+  .t-mono { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+  @media (max-width: 560px) { .typerow { grid-template-columns: 1fr; gap: 0.25rem; } }
+
+  /* ---------- before / after cards ---------- */
+
+  .cardpair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hairline); }
+  @media (max-width: 700px) { .cardpair { grid-template-columns: 1fr; } }
+  .cardcell { background: var(--raised); padding: 1.4rem; }
+  .cardcell > .lbl {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em;
+    text-transform: uppercase; display: block; margin-bottom: 1rem;
+  }
+  .cardcell.now > .lbl { color: #D46B57; }
+  .cardcell.next > .lbl { color: #6FC79A; }
+
+  .pcard { background: var(--obsidian); border: 1px solid var(--hairline-2); }
+  .pcard .shot {
+    aspect-ratio: 1 / 1;
+    background:
+      radial-gradient(circle at 38% 32%, rgba(47,111,208,0.34), transparent 58%),
+      radial-gradient(circle at 70% 68%, rgba(123,63,160,0.30), transparent 58%),
+      linear-gradient(150deg, #17150E, #0C0B08);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .pcard .shot span {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  .pcard .shot.dense {
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 6px),
+      linear-gradient(150deg, #221A2C, #120E17);
+  }
+  .pcard .pinfo { padding: 0.9rem; }
+
+  .badge {
+    position: absolute; top: 0.6rem; left: 0.6rem;
+    font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 0.24rem 0.5rem;
+    background: var(--gold); color: #14120C; font-weight: 700;
+  }
+
+  .ptitle { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; color: var(--ink); margin: 0 0 0.3rem; }
+  .pdesc { font-size: 0.83rem; color: var(--ink-2); margin: 0 0 0.55rem; line-height: 1.45; max-width: none; }
+  .pprice { font-family: var(--font-mono); font-size: 0.92rem; color: var(--ink); font-variant-numeric: tabular-nums; margin: 0 0 0.15rem; }
+  .pprice .was { color: var(--ink-3); text-decoration: line-through; margin-right: 0.35rem; }
+  .pprice .save { color: var(--gold); font-size: 0.76rem; margin-left: 0.3rem; }
+  .ptrust { font-size: 0.72rem; color: var(--ink-3); margin: 0 0 0.85rem; line-height: 1.5; max-width: none; }
+
+  .btn-old {
+    display: inline-block; background: #E0AC4E; color: #2A2113;
+    padding: 0.5rem 1.05rem; border-radius: 6px;
+    font-size: 0.85rem; font-family: var(--font-body);
+  }
+  .btn-new {
+    display: block; text-align: center; width: 100%;
+    background: linear-gradient(100deg, var(--gold-deep), var(--gold) 42%, var(--gold-lit) 78%, var(--gold));
+    color: #120F08; padding: 0.62rem 1rem;
+    font-family: var(--font-mono); font-size: 0.72rem;
+    letter-spacing: 0.13em; text-transform: uppercase; font-weight: 700;
+    border: 0;
+  }
+
+  /* ---------- comparison table ---------- */
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--hairline); }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; }
+  th, td { padding: 0.62rem 0.85rem; text-align: left; border-bottom: 1px solid var(--hairline-2); font-size: 0.88rem; color: var(--ink-2); }
+  thead th {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-3); font-weight: 500;
+    background: var(--raised-2); border-bottom: 1px solid var(--hairline);
+  }
+  thead th.hi { color: var(--gold); }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.tick { color: var(--gold); font-family: var(--font-mono); }
+  td.no { color: #3E382A; font-family: var(--font-mono); }
+  td.rowname { color: var(--ink); }
+  td.pricerow { font-family: var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ---------- buy bar mock ---------- */
+
+  .buybar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    background: var(--raised-2); border-top: 1px solid var(--gold-deep);
+    padding: 0.75rem 1rem; flex-wrap: wrap;
+  }
+  .buybar .bb-l { display: flex; flex-direction: column; }
+  .buybar .bb-t { font-size: 0.82rem; color: var(--ink); }
+  .buybar .bb-s { font-family: var(--font-mono); font-size: 0.66rem; color: var(--ink-3); letter-spacing: 0.08em; }
+  .buybar .btn-new { width: auto; padding: 0.55rem 1.3rem; }
+
+  /* ---------- countdown mock ---------- */
+
+  .countdown { display: flex; gap: 1px; background: var(--hairline); }
+  .cd { background: var(--raised-2); padding: 0.7rem 1rem; text-align: center; flex: 1; }
+  .cd .n { font-family: var(--font-mono); font-size: 1.5rem; color: var(--gold-lit); font-variant-numeric: tabular-nums; display: block; line-height: 1.1; }
+  .cd .u { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ---------- platform callout ---------- */
+
+  .callout { border: 1px solid var(--gold-deep); background: rgba(201,162,39,0.055); padding: 1.4rem 1.5rem; }
+  .callout h2 { font-size: 1.4rem; margin-bottom: 0.6rem; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ---------- build order ---------- */
+
+  .phase { border-top: 1px solid var(--hairline); padding: 1.4rem 0; display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.25rem; }
+  .phase:last-child { border-bottom: 1px solid var(--hairline); }
+  .phase .when { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); padding-top: 0.2rem; }
+  .phase h3 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--ink); }
+  .phase p { margin: 0; font-size: 0.93rem; }
+  @media (max-width: 620px) { .phase { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); font-size: 0.87rem; color: var(--ink-3); }
+  footer p { color: var(--ink-3); max-width: 68ch; }
+
+  a { color: var(--gold); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Design Direction · thekhemistree.com</div>
+    <h1>Template to Temple</h1>
+    <p class="standfirst">
+      The artwork on this store is commissioned-grade. The store around it is a builder
+      template with the defaults still on. Closing that gap is the upgrade — and most of it
+      is a weekend of work, not a rebuild.
+    </p>
+  </header>
+
+  <section>
+    <div class="sec-label">The gap</div>
+    <h2>Your art is premium. Your chrome is stock.</h2>
+    <p>
+      Look at what a visitor actually processes: a magnificent gold-and-chrome tree of life,
+      then a default sans-serif nav, a rounded amber button, and a three-column grid with
+      builder-default type. The eye reads the mismatch instantly, even when the viewer
+      can't name it — and the conclusion it reaches is <em>this is an artist who uploaded
+      good art to a template</em>, not <em>this is a collector's storefront</em>.
+    </p>
+    <p>
+      That perception is what makes $299 feel risky. Nothing below asks you to change the
+      artwork. It asks you to <strong>extract a design system out of the artwork you already
+      paid for</strong>, and apply it to every surface the art isn't covering.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-label">Move one — tokens</div>
+    <h2>Pull the palette out of the album cover</h2>
+    <p>
+      You have two visual worlds already and they're both strong: KhemisTree is gold, chrome
+      and obsidian; VLTRN is electric blue, plasma orange and nebula purple. Right now
+      neither is defined anywhere in the site's CSS, so every button and heading falls back
+      to a builder default. Define these once as variables and the entire site snaps into
+      alignment.
+    </p>
+
+    <div class="specimen">
+      <div class="specimen-cap">Brand tokens — KhemisTree (parent)</div>
+      <div class="swatches">
+        <div class="sw"><span class="chipcolor" style="background:#0B0A07"></span><span class="meta"><span class="nm">Obsidian</span><span class="hx">#0B0A07</span></span></div>
+        <div class="sw"><span class="chipcolor" style="background:#14120C"></span><span class="meta"><span class="nm">Raised</span><span class="hx">#14120C</span></span></div>
+        <div class="sw"><span class="chipcolor" style="background:#8C6A1E"></span><span class="meta"><span class="nm">Gold deep</span><span class="hx">#8C6A1E</span></span></div>
+        <div class="sw"><span class="chipcolor" style="background:#C9A227"></span><span class="meta"><span class="nm">Gold</span><span class="hx">#C9A227</span></span></div>
+        <div class="sw"><span class="chipcolor" style="background:#F2D98A"></span><span class="meta"><span class="nm">Gold lit</span><span class="hx">#F2D98A</span></span></div>
+        <div class="sw"><span class="chipcolor" style="background:#C9CDD4"></span><span class="meta"><span class="nm">Chrome</span><span class="hx">#C9CDD4</span></span></div>
+      </div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-cap">Release tokens — VLTRN (this campaign only)</div>
+      <div class="swatches">
+        <div class="sw"><span class="chipcolor" style="background:#2F6FD0"></span><span class="meta"><span class="nm">VLTRN blue</span><span class="hx">#2F6FD0</span></span></div>
+        <div class="sw"><span class="chipcolor" style="background:#F07A22"></span><span class="meta"><span class="nm">Plasma</span><span class="hx">#F07A22</span></span></div>
+        <div class="sw"><span class="chipcolor" style="background:#7B3FA0"></span><span class="meta"><span class="nm">Nebula</span><span class="hx">#7B3FA0</span></span></div>
+      </div>
+    </div>
+
+    <p>
+      Keep the split disciplined: <strong>gold is the store, blue-orange is the record.</strong>
+      Gold does all the chrome — buttons, rules, badges, nav. VLTRN's colors appear only on
+      the release pages and product imagery. That way the next project gets its own palette
+      without you rebuilding the site, and the parent brand stays constant underneath.
+    </p>
+
+    <h3>Three typefaces, three jobs</h3>
+    <p>
+      One face doing everything is the loudest signal of a template. Split the work: a
+      high-contrast serif for display (it echoes the metallic KhemisTree logotype), a plain
+      grotesque for reading, and a mono for anything that behaves like data — prices,
+      badges, countdown, shipping windows, size specs.
+    </p>
+
+    <div class="specimen">
+      <div class="specimen-cap">Type scale</div>
+      <div class="specimen-body">
+        <div class="typerow"><span class="spec">Display / 700</span><span class="t-display">Ordained. Received.</span></div>
+        <div class="typerow"><span class="spec">Heading / 700</span><span class="t-h2">The Collector Bundle</span></div>
+        <div class="typerow"><span class="spec">Body / 400</span><span class="t-body">Cassette, embroidered snapback and DTG tee — you pick the styles and sizes.</span></div>
+        <div class="typerow"><span class="spec">Mono / caps</span><span class="t-mono">Ships in 10–14 days</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">Move two — hero</div>
+    <h2>Let the art be the stage, not the whole play</h2>
+    <p>
+      Right now the artwork <em>is</em> the page — full viewport, no type over it, the button
+      stranded underneath. That's a poster, and posters don't sell; they get admired and
+      scrolled past. The fix is layering rather than stacking.
+    </p>
+    <ul class="moves">
+      <li><strong>Crop the art to a band</strong>, roughly 60–70vh, not the full screen.</li>
+      <li><strong>Lay a gradient scrim</strong> over the lower third — obsidian at 85% fading to transparent — so type sits on it legibly without dimming the image.</li>
+      <li><strong>Set the headline and buttons on top of the art</strong>, bottom-left. The CTA is visible without scrolling, which is the whole point.</li>
+      <li><strong>Keep the KhemisTree mark small</strong> in the header. A logo at full-screen scale reads as a splash page, and splash pages are a decade out of date.</li>
+    </ul>
+    <p>
+      The same pattern carries the VLTRN page: cover art as the ground, release date and
+      pre-order button layered over it, tracklist and credits below the fold.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-label">Move three — the product card</div>
+    <h2>Rebuild the unit that does all the selling</h2>
+    <p>
+      Nine of these tile your shop, so this component carries more conversion weight than
+      any other thing on the site. Here's the current card against the same card with a
+      real information hierarchy — identical product, identical price.
+    </p>
+
+    <div class="specimen">
+      <div class="specimen-cap">Product card — current vs. proposed</div>
+      <div class="cardpair">
+        <div class="cardcell now">
+          <span class="lbl">Current</span>
+          <div class="pcard">
+            <div class="shot dense"><span>dense infographic</span></div>
+            <div class="pinfo">
+              <p class="ptitle">VLTRN Collector Bundle</p>
+              <p class="pprice">$129.00</p>
+              <div style="margin-top:0.7rem"><span class="btn-old">Buy Now</span></div>
+            </div>
+          </div>
+          <p style="font-size:0.78rem;color:var(--ink-3);margin:0.9rem 0 0;max-width:none">
+            Two facts and a button. The savings, contents and ship time are inside the
+            image, where they're unreadable at this size.
+          </p>
+        </div>
+
+        <div class="cardcell next">
+          <span class="lbl">Proposed</span>
+          <div class="pcard">
+            <div class="shot"><span class="badge">Most popular</span><span>product photograph</span></div>
+            <div class="pinfo">
+              <p class="ptitle">VLTRN Collector Bundle</p>
+              <p class="pdesc">Cassette + embroidered snapback + DTG tee. You pick the styles, colors and sizes.</p>
+              <p class="pprice"><span class="was">$143</span>$129<span class="save">Save $14</span></p>
+              <p class="ptrust">Free digital download at purchase · Ships in 10–14 days</p>
+              <span class="btn-new">Choose your styles</span>
+            </div>
+          </div>
+          <p style="font-size:0.78rem;color:var(--ink-3);margin:0.9rem 0 0;max-width:none">
+            Same product, same price — now with the anchor, the saving, the contents and
+            the reassurance all as live text that survives a phone screen.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      Two details doing quiet work in the proposed version. The <strong>badge</strong> is a
+      merchandising slot, not decoration — "Most popular", "Limited pressing", "Pre-order" —
+      and it's how you steer traffic to the tier you want to sell. The <strong>gold gradient
+      button</strong> picks up the metallic treatment from your own logotype, so the CTA
+      finally looks like it belongs to this brand instead of shipping with the theme.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-label">Move four — art direction</div>
+    <h2>Replace the infographics with photography</h2>
+    <p>
+      This is the single biggest visual upgrade available to you, and it's the one that
+      isn't code. Your three bundle images are sales flyers — dense, text-packed,
+      built for a feed. Your six merch images are clean product renders. Side by side in one
+      grid, the inconsistency is what makes the store read as improvised.
+    </p>
+    <p>
+      Once the bundle facts live in HTML (Move three), those graphics have no job left. Give
+      every SKU the same treatment instead:
+    </p>
+    <ul class="moves">
+      <li><strong>One ground, one light setup, one aspect ratio</strong> across all nine. Square, shot on obsidian, single warm key light from the upper left to catch the gold — matched to your own brand lighting.</li>
+      <li><strong>Bundles as flat lays</strong> — the actual cassette, hat and tee arranged together. A flat lay sells a bundle far better than a diagram of one, because it shows the haul.</li>
+      <li><strong>One worn shot per apparel item.</strong> Nobody buys a $99 jersey from a floating render. This is also the cheapest fix on the list.</li>
+      <li><strong>A second image on hover</strong> — back of the jersey, the embroidery detail, the vinyl out of the sleeve.</li>
+    </ul>
+    <p>
+      Keep the flyer graphics. They're good — they just belong on Instagram, where a dense
+      promo image is the right format, not in a product grid.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-label">Move five — components</div>
+    <h2>Build the four pieces you don't have</h2>
+    <p>
+      These are standard on any store selling a tiered pre-order, and all four are missing.
+      Each one is a small component that removes a specific reason to leave.
+    </p>
+
+    <h3>Bundle comparison</h3>
+    <p>
+      Your ladder is well designed — $69 entry, $129 middle, $299 flagship, where the top
+      tier makes the middle look sensible. But nothing on the site lets a shopper compare
+      tiers, so the ladder never gets used.
+    </p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Included</th><th>Starter</th><th class="hi">Collector</th><th>Legend</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="rowname">Digital download</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td class="rowname">CD</td><td class="tick">✓</td><td class="no">—</td><td class="tick">✓</td></tr>
+          <tr><td class="rowname">Cassette</td><td class="no">—</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td class="rowname">Vinyl</td><td class="no">—</td><td class="no">—</td><td class="tick">✓</td></tr>
+          <tr><td class="rowname">Tee</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td class="rowname">Snapback</td><td class="no">—</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td class="rowname">Jersey</td><td class="no">—</td><td class="no">—</td><td class="tick">✓</td></tr>
+          <tr><td class="pricerow">Price</td><td class="pricerow">$69</td><td class="pricerow">$129</td><td class="pricerow">$299</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Countdown</h3>
+    <p>A pre-order without a visible deadline is a purchase people postpone indefinitely.</p>
+    <div class="specimen">
+      <div class="specimen-cap">Pre-order closes in</div>
+      <div class="specimen-body">
+        <div class="countdown">
+          <div class="cd"><span class="n">11</span><span class="u">Days</span></div>
+          <div class="cd"><span class="n">04</span><span class="u">Hours</span></div>
+          <div class="cd"><span class="n">37</span><span class="u">Min</span></div>
+          <div class="cd"><span class="n">52</span><span class="u">Sec</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Sticky buy bar</h3>
+    <p>
+      On a phone, the buy button scrolls off within a second and never comes back. A bar
+      pinned to the bottom of the viewport keeps the purchase one thumb-tap away through
+      the entire page.
+    </p>
+    <div class="specimen">
+      <div class="specimen-cap">Pinned to viewport bottom, mobile</div>
+      <div class="buybar">
+        <div class="bb-l">
+          <span class="bb-t">VLTRN Collector Bundle</span>
+          <span class="bb-s">$129 · Ships 10–14 days</span>
+        </div>
+        <span class="btn-new">Add to cart</span>
+      </div>
+    </div>
+
+    <h3>Audio</h3>
+    <p>
+      A player docked above the buy buttons, on both the VLTRN page and the shop. There is
+      no design system in the world that sells a record nobody has heard.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-label">Move six — motion</div>
+    <h2>One gesture, used sparingly</h2>
+    <p>
+      Your brand is metallic, so the motion should be too: a slow specular sweep across the
+      gold on button hover — a highlight travelling left to right over about 600ms. That
+      single gesture, reused on buttons and badges, reads as deliberate craft.
+    </p>
+    <p>
+      Everything else stays still. A quiet fade-in on the product grid as it enters the
+      viewport, and nothing more. Resist parallax, floating particles and animated
+      backgrounds — heavy motion is the fastest way to make an expensive-looking site feel
+      cheap, and it wrecks performance on the in-app browsers most of your traffic arrives
+      through. Wrap all of it in <span style="font-family:var(--font-mono);font-size:0.85em">prefers-reduced-motion</span>.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-label">The bigger question</div>
+    <div class="callout">
+      <h2>Is the platform itself the ceiling?</h2>
+      <p>
+        Several problems here aren't design problems — they're limits of the builder the
+        store sits on. Proper product pages with variants, size charts, abandoned-cart
+        email, review capture, a pre-order counter, bundle logic and inventory caps on the
+        vinyl are all standard on a commerce-native platform and all awkward-to-impossible
+        on a general site builder.
+      </p>
+      <p>
+        <strong>My read: do the design work first, on the platform you're on.</strong> Moves
+        one through four are worth doing regardless and none of them are wasted in a
+        migration — tokens, copy, photography and hierarchy all transfer intact. Then decide
+        on the platform <em>after</em> this release, using real numbers, and never mid-campaign.
+        Migrating a live pre-order is how you lose orders and break links at exactly the
+        moment attention peaks.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">Sequence</div>
+    <h2>Build order</h2>
+    <p>Ordered so the cheapest work with the largest visible effect lands first.</p>
+
+    <div class="phase">
+      <div class="when">Weekend 1</div>
+      <div>
+        <h3>Tokens and type</h3>
+        <p>Define the palette and the three-face type scale. Restyle nav, buttons, headings and prices against them. Nothing structural — but this alone removes most of the template smell.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="when">Weekend 1</div>
+      <div>
+        <h3>Hero rebuild</h3>
+        <p>Crop the art, add the scrim, set headline and two buttons over it. Shrink the logo into the header.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="when">Week 2</div>
+      <div>
+        <h3>Product card + comparison table</h3>
+        <p>Move every fact out of the JPEGs into text. Add badges, anchor pricing and the tier comparison. This is where conversion actually moves.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="when">Week 2</div>
+      <div>
+        <h3>Countdown, sticky bar, audio</h3>
+        <p>Three small components, each removing a specific reason people leave without buying.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="when">Weeks 3–4</div>
+      <div>
+        <h3>Photography</h3>
+        <p>One shoot, nine SKUs, one lighting setup, plus worn shots for the three apparel items. The longest lead time here, and the biggest jump in perceived value.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="when">After the drop</div>
+      <div>
+        <h3>Platform decision</h3>
+        <p>Revisit with real conversion data in hand. Not before, and not during the campaign.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Direction based on screenshots of the homepage, VLTRN page and shop grid. Colors are
+      sampled by eye from the artwork — pull exact values from your source files before
+      committing them to code. I haven't seen the product pages, cart, checkout or mobile
+      rendering, so component specs here address the surfaces I could review; the checkout
+      flow is worth its own pass.
+    </p>
+  </footer>
+
+</div>
