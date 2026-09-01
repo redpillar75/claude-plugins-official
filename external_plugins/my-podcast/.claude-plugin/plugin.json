@@ -1,0 +1,7 @@
+{
+  "name": "my-podcast",
+  "description": "Open-source AI voiceover and podcast narration SaaS. Generate lifelike AI voiceovers with advanced speech synthesis, fine-grained voice controls (speed, pitch, volume), 470+ voice selection, and integrated Stripe billing. Perfect for podcast creators, YouTube voiceovers, audiobook narration, and e-learning content.",
+  "author": {
+    "name": "SamurAIGPT"
+  }
+}
